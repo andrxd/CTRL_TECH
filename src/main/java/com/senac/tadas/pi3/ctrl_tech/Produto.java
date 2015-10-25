@@ -1,31 +1,28 @@
 package com.senac.tadas.pi3.ctrl_tech;
 
+//package com.senac.tadas.pi3.ctrl_tech;
+
 public class Produto {
 
-	private long codigoBarra;
+    private long codigoBarra;
 
-	private String nome;
+    private String nome;
 
-	private String descricao;
+    private String descricao;
 
-	private float valor;
+    private float valor;
 
-	private String usuario;
+    private String usuario;
 
-	private int qtdAtual;
+    private int qtdAtual;
 
-	private int qtdMinima;
+    private int qtdMinima;
 
-	private int qtdMaxima;
+    private int qtdMaxima;
 
-	private String fabricante;
+    private String fabricante;
 
-	private String garantia;
+    private String garantia;
 
-	private Usuario usuario;
-
-	public void Produto(Long codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
-
-	}
-
+	//private Usuario usuario;
 }

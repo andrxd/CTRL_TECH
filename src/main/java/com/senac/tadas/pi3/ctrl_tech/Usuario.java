@@ -1,39 +1,88 @@
-import java.util.ArrayList;
+package com.senac.tadas.pi3.ctrl_tech;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Usuario {
 
-	private String login;
+    private String email;
 
-	private String senha;
+    private String senha;
 
-	private String nome;
+    private String nomeCompleto;
 
-	private String sobrenome;
+    private String tipoUsuario;
 
-	private String rg;
+    private String filial;
 
-	private Gerente gerente;
+    public Usuario() {
+    }
 
-	private Vendedor vendedor;
+    public Usuario(String email, String senha, String nomeCompleto, String tipoUsuario, String filial) {
+        this.email = email;
+        this.senha = senha;
+        this.nomeCompleto = nomeCompleto;
+        this.tipoUsuario = tipoUsuario;
+        this.filial = filial;
+    }
 
-	public void Usuario(String login, String senha, String nome, String sobrenome, String rg) {
+    public String getEmail() {
+        return email;
+    }
 
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public ArrayList listarProduto() {
-		return null;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public void incluirProduto() {
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	}
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
 
-	public void retirarProduto() {
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
 
-	}
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
 
-	public ArrayList gerarRelatorio() {
-		return null;
-	}
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getFilial() {
+        return filial;
+    }
+
+    public void setFilial(String filial) {
+        this.filial = filial;
+    }
+
+    public boolean autenticar(String email, String senha) {
+        if (this.email != null) {             
+                    
+        }
+        return false;
+    }
+
+    public boolean autorizar(String permissaoNecessaria) {
+        return this.tipoUsuario.equals(permissaoNecessaria);
+    }
 
 }

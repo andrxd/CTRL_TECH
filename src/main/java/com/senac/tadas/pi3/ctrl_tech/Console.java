@@ -1,13 +1,17 @@
+package com.senac.tadas.pi3.ctrl_tech;
 
-import com.senac.tadas.pi3.ctrl_tech.Produto;
+//package com.senac.tadas.pi3.ctrl_tech.java;
+
+
+//import com.senac.tadas.pi3.ctrl_tech.java.Produto;
 
 public class Console {
 
 	private float armazenamento;
 
-	private Produto produto;
+	//private Produto produto;
 
-	private Acessorio acessorio;
+	//private Acessorio acessorio;
 
 	private Jogo jogo;
 
