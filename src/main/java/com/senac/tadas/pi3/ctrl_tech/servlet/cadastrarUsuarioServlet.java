@@ -8,6 +8,11 @@ package com.senac.tadas.pi3.ctrl_tech.servlet;
 import com.senac.tadas.pi3.ctrl_tech.Usuario;
 import com.senac.tadas.pi3.ctrl_tech.dao.UsuarioDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,13 +20,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import sun.text.normalizer.UBiDiProps;
 
 /**
  *
  * @author Andre
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/Login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "cadastrarUsuarioServlet", urlPatterns = {"/cadastrarUsuario"})
+public class cadastrarUsuarioServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,56 +41,42 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sessao = request.getSession(false);
-        if (sessao == null || sessao.getAttribute("usuario") == null) {
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
-            return;
-        }
-        response.sendRedirect("ListarContatosServlet");
+        RequestDispatcher rd = request.getRequestDispatcher("/cadatrarUsuario.jsp");
+        rd.forward(request, response);
+
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Salva os dados digitados e faz redirect para a lista (POST-REDIRECT-GET)
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailString = request.getParameter("login");
+        
+        String nomeCompleto = request.getParameter("nome");
+        //String dtNascimentoStr = request.getParameter("dtnascimento");
+        String RG = request.getParameter("rg");
+        String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        String filial = request.getParameter("filial");
+        String cargo = request.getParameter("cargo");
+        String tipoUsuario = request.getParameter("usuario");
         
-        UsuarioDAO userDao = new UsuarioDAO();
-        
-        Usuario usuario = validar(emailString, senha);
-        if (usuario != null) {
-            HttpSession sessao = request.getSession(false);
-            if (sessao != null) {
-                // Força invalidação da sessão anterior.
-                sessao.invalidate();
-            }
-            sessao = request.getSession(true);
-            sessao.setAttribute("usuario", usuario);
+      
+
+        Usuario user = new Usuario(email, senha, nomeCompleto, tipoUsuario, filial, cargo, RG);
+
+        try {
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.incluir(user);
             response.sendRedirect("cadastrarUsuario");
-            return;
-            // FIM CASO SUCESSO
+        } catch (Exception e) {
+            response.sendRedirect("cadastrarUsuario");
         }
-        response.sendRedirect("erroLogin.jsp");
-
-    }
-
-    private Usuario validar(String emailString, String senha) {
-        
-        UsuarioDAO userDao = new UsuarioDAO();
-        
-        Usuario usuario = userDao.buscarUsuario(emailString, senha);
-        
-        if (usuario != null && userDao.autenticar(emailString, senha)) {
-            return usuario;
-        }
-        return null;
     }
 }

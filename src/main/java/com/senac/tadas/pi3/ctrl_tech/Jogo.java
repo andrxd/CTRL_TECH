@@ -1,3 +1,5 @@
+package com.senac.tadas.pi3.ctrl_tech;
+
 
 import com.senac.tadas.pi3.ctrl_tech.Produto;
 

@@ -23,15 +23,37 @@ public class Usuario {
 
     private String filial;
 
-    public Usuario() {
-    }
+    private String cargo;
 
-    public Usuario(String email, String senha, String nomeCompleto, String tipoUsuario, String filial) {
+    private String rg;
+
+    public Usuario(String email, String senha, String nomeCompleto, String tipoUsuario, String filial, String cargo, String rg) {
         this.email = email;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
         this.tipoUsuario = tipoUsuario;
         this.filial = filial;
+        this.cargo = cargo;
+        this.rg = rg;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public Usuario() {
     }
 
     public String getEmail() {
@@ -75,8 +97,8 @@ public class Usuario {
     }
 
     public boolean autenticar(String email, String senha) {
-        if (this.email != null) {             
-                    
+        if (this.email != null) {
+
         }
         return false;
     }
