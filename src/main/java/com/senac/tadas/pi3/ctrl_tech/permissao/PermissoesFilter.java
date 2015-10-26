@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andre
  */
-@WebFilter(filterName = "PermissoesFilter", servletNames = {"", "IncluirContatoServlet"})
+@WebFilter(filterName = "PermissoesFilter", urlPatterns = {"cadastrarUsuario.jsp"}, servletNames = {"", "IncluirContatoServlet"})
 public class PermissoesFilter implements Filter {
 
     @Override

@@ -5,18 +5,35 @@ package com.senac.tadas.pi3.ctrl_tech;
 
 //import com.senac.tadas.pi3.ctrl_tech.java.Produto;
 
-public class Console {
+public class Console extends Produto{
 
-	private float armazenamento;
+    public float getArmazenamento() {
+        return armazenamento;
+    }
 
-	//private Produto produto;
+    public void setArmazenamento(float armazenamento) {
+        this.armazenamento = armazenamento;
+    }
 
-	//private Acessorio acessorio;
+    public Jogo getJogo() {
+        return jogo;
+    }
+
+    public void setJogo(Jogo jogo) {
+        this.jogo = jogo;
+    }
+
+	private float armazenamento;	
 
 	private Jogo jogo;
 
-	public void Produto(Long codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
-
-	}
+    public Console(float armazenamento, Jogo jogo, String codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
+        super(codigoBarra, nome, descricao, valor, usuario, qtdAtual, qtdMinima, qtdMaxima, fabricante, garantia);
+        this.armazenamento = armazenamento;
+        this.jogo = jogo;
+    }
+        
+        
+	
 
 }

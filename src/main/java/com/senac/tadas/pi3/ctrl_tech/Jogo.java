@@ -1,18 +1,34 @@
 package com.senac.tadas.pi3.ctrl_tech;
 
+public class Jogo extends Produto {
 
-import com.senac.tadas.pi3.ctrl_tech.Produto;
+    private String genero;
 
-public class Jogo {
+    private int faixaEtaria;
 
-	private String genero;
+    public Jogo(String genero, int faixaEtaria, String codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
+        super(codigoBarra, nome, descricao, valor, usuario, qtdAtual, qtdMinima, qtdMaxima, fabricante, garantia);
+        this.genero = genero;
+        this.faixaEtaria = faixaEtaria;
+    }
 
-	private int faixaEtaria;
+    public String getGenero() {
+        return genero;
+    }
 
-	private Produto produto;
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 
-	public void Produto(Long codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
+    public int getFaixaEtaria() {
+        return faixaEtaria;
+    }
 
-	}
+    public void setFaixaEtaria(int faixaEtaria) {
+        this.faixaEtaria = faixaEtaria;
+    }
 
+    
+    
+    
 }
