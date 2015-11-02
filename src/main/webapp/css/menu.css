@@ -1,57 +1,133 @@
-body{
-    background: #666;
-    background-image:url(".../imagem/mario.jpg");
+body {
+    font-size: 12px;
+    line-height: 24px;
+    background-image:url(".../imagem/max.png");
     background-attachment: fixed;
-    background-size: 1300px;
-    background-position-x: 50px;
+    background-size: 1600px;
+    background-position-x: 0px;
     background-repeat: no-repeat;
-    width: 800px;
-    left: 400px;
     font: 12px 'Lucida Grande', Arial, sans-serif;
-    position: absolute;
-    color: white;
-    margin:0;
-    padding:0;
-    text-align:center;
+    border-radius: 10px;
+    margin-top: 15px;
+    
 }
 
-#banner{
-    background: transparent;
-    position: static;
-    top:0;
-    left: 300px;
+nav {
+    margin: 100px auto;
+    text-align: center;
 }
-#menu div{
+nav ul ul {
+    display: none;
+}
+nav ul li:hover > ul {
+    background: #eee; 
+}
+
+nav ul {
+    background: #C0C0C0 ;
+    border-radius: 10px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.15);
+    display: inline-table;
+    list-style: outside none none;
+    padding: 0 20px;
     position: relative;
-    top: -30px;
-    left: 700px;}
-
-
-
-#menu ul {
-    left : 250px;
-    position: absolute;
-    padding:0px;
-    margin:0px;
-    width:250px;
-    background-color:#EDEDED;
-    list-style:none;
-    font:80% Tahoma;
+}
+nav ul::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+nav ul li {
+    float: left;
 }
 
-#menu ul li { display: inline; }
-
-#menu ul li a {
-    background-color:rgb(240,240,240);
-    color: #333;
+nav ul li a {
+    font-weight: bold;
+    color: #000000; 
     text-decoration: none;
-    border-bottom:3px solid rgb(240,240,240);
-    padding: 2px 10px;
-    float:left;
+    display: block;
+    padding: 15px 40px;
+    text-decoration: none;
+}
+nav ul ul {
+    background: #5f6975 none repeat scroll 0 0;
+    border-radius: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+}
+nav ul ul li {
+    border-bottom: 1px solid #575f6a;
+    border-top: 1px solid #6b727c;
+    float: none;
+    position: relative;
+}
+nav ul ul li a {
+    color: #fff;
+    padding: 15px 40px;
 }
 
-#menu ul li a:hover {
-    background-color:rgb(214,214,214);
-    color: rgb(109,109,109);
-    border-bottom: gray;
+nav ul ul ul {
+    left: 100%;
+    position: absolute;
+    top: 0;
 }
+
+fieldset{
+    background-color: #EEE;
+    background: -webkit-gradient (linear, left top, left bottom, from(#F9F9F9), to(#EEE));
+    background: -moz-linear-gradient (top,#F9F9F9, #EEE);
+    border: 1px solid #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #DDD;
+    width: 550px;
+    margin: auto;
+}
+
+
+
+label{
+    font-weight: bold;
+    display:block;
+    padding: 5px;
+}
+
+
+label span{
+    display: block;
+    padding: 3px;
+    color: #999;
+}
+
+label input{
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+
+}
+
+.button{
+    background-color: #77AACC;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    color: #FFF;
+    padding: 5px 16px;
+    box-shadow: 0px 0px 10px #DDD;
+
+    font-family: tahoma;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight:700;
+    cursor: pointer;
+    display:inline-block;
+    text-decoration: none;
+}
+
+.btn-effect:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+

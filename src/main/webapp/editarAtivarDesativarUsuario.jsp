@@ -1,3 +1,9 @@
+<%-- 
+    Document   : editarAtivarDesativarUsuario
+    Created on : Nov 1, 2015, 10:31:51 PM
+    Author     : Andre
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -6,11 +12,12 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <html>
     <head>
-        <title>Cadastro do Usuário</title>
+        <title>Tela de Cadastro do Usuário</title>
         <meta charset="UTF-8">
-        <link href="/css/menu.css"  rel="stylesheet" type="text/css" />
+        <link href="css/menu.css"  rel="stylesheet" type="text/css" />
         <script src="menu.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -18,22 +25,35 @@ and open the template in the editor.
 
         <!-- BANNER CENTRALIZADO -->
         <div id="banner" align="center" >
-            <img src = "imagem/banner.png" width="700" height="200" >
+            <img src = "imagem/banner.png" width="800" height="200" >
 
         </div>
 
-        <div id="menu" >
-            <br><br>
+        <nav>
             <ul>
-                <li><a href="">Cadastrar / Repor Produto</a></li>
-                <li><a href="">Consultar</a></li>
-                <li><a href="">Vender</a></li>
+                <li><span class="CadastrarUsuarios"></span><a href="#">CADASTRAR USUARIO</a></li>
+                <li><span class="EditarUsuarios"></span><a href="#">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
 
             </ul>
-        </div>
+        </nav>
+        <!-- BARRA DE BUSCA DE PERFIS--> 
+        <fieldset>
+            <table cellspacing="10">
+                <tr>
+                    <td>
+                        <label for="nome">DIGITE O EMAIL  USUARIO: </label>
 
-        <br><br>
-        <form action="cadastrarUsuarioServlet" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded">
+                    </td>
+                    <td>
+                        <input type="text" id="nome" name="busca"/>
+                    </td>
+                    <td>
+                        <img src = "imagem/lupa.png" width="25" height="25">
+
+                        <!--                        <input type="button" value="Listar Todos" onclick="" >-->
+                    </td>
+            </table>
+            <br><br>
             <fieldset>
                 <legend>DADOS CADASTRAIS</legend>
                 <table cellspacing="10">
@@ -44,24 +64,13 @@ and open the template in the editor.
                         <td align="left">
                             <input type="text" id="nome" name="nome"/>
                         </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>NASCIMENTO: </label>
-                        </td>
-                        <td align="left">
-                            <input type="text" id ="dia" name="dia" size="2" maxlength="2" value="dd"/> 
-                            <input type="text" id="mes" name="mes" size="2" maxlength="2" value="mm"/> 
-                            <input type="text" id="ano" name="ano" size="4" maxlength="4" value="aaaa"/>
-                        </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="rg">RG: </label>
                         </td>
                         <td align="left">
-                            <input type="text" id="rg" name="rg" size="13" maxlength="13"/> 
+                            <input type="text" id="rg" name="rg" maxlength="13"/> 
                         </td>
                     </tr>
                     <tr>
@@ -88,6 +97,7 @@ and open the template in the editor.
             <fieldset>
                 <legend>TIPO DE USUÁRIO:</legend>
                 <table cellspacing="10">
+
                     <input type="radio" name="usuario" value="comum" />Comum
                     <input  type="radio" name="usuario" value="administrador"/>Administrador
                     <input type="radio" name="usuario" value="suporte"/>Suporte
@@ -113,17 +123,35 @@ and open the template in the editor.
                             <label for="pass">Senha: </label>
                         </td>
                         <td align="left">
-                            <input type="password" id="senha" name="senha"/>
+                            <input type="password" id="pass" name="pass"/>
                         </td>
                     </tr>
-
+                    <tr>
+                        <td>
+                            <label for="passconfirm">Confirme a senha: </label>
+                        </td>
+                        <td align="left">
+                            <input type="password" id="passconfirm" name="passconfirm"/>
+                        </td>
+                    </tr>
                 </table>
             </fieldset>
             <br>
+            <fieldset>
+                <legend>STATUS DA CONTA:</legend>
+                <table cellspacing="10">
 
-            <input type="submit" value="Cadastrar"/>
-            <input type="button" value="Limpar" onClick="limpar()"/>
-            <p><a href="Logout">Sair</a>
-        </form>
+                    <input type="radio" name="status" value="Ativo" />Ativo
+                    <input  type="radio" name="status" value="Desativo"/>Desativo
+
+
+                </table>
+            </fieldset>
+            <center>
+                <input type="button" value="Salvar" onClick="enviar()"/>
+                <input type="button" value="Limpar" onClick="limpar()"/>
+                <input type="button" value="Voltar" onClick=""/>
+            </center> 
+
     </body>
 </html>

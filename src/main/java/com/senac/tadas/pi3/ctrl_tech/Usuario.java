@@ -27,6 +27,10 @@ public class Usuario {
 
     private String rg;
 
+  
+    
+    private int ativo;
+
     public Usuario(String email, String senha, String nomeCompleto, String tipoUsuario, String filial, String cargo, String rg) {
         this.email = email;
         this.senha = senha;
@@ -36,7 +40,24 @@ public class Usuario {
         this.cargo = cargo;
         this.rg = rg;
     }
+    public Usuario(String email, String senha, String nomeCompleto, String tipoUsuario, String filial, String cargo, String rg,int ativo) {
+        this.email = email;
+        this.senha = senha;
+        this.nomeCompleto = nomeCompleto;
+        this.tipoUsuario = tipoUsuario;
+        this.filial = filial;
+        this.cargo = cargo;
+        this.rg = rg;
+        this.ativo = ativo;
+    }
+    
+    public int getAtivo() {
+        return ativo;
+    }
 
+    public void setAtivo(int ativo) {
+        this.ativo = ativo;
+    }
     public String getCargo() {
         return cargo;
     }

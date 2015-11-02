@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
             rd.forward(request, response);
             return;
         }
-        response.sendRedirect("ListarContatosServlet");
+        response.sendRedirect("/");
     }
 
     /**

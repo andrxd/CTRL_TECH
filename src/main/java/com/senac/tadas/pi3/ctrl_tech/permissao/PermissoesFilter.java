@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andre
  */
-@WebFilter(filterName = "PermissoesFilter", urlPatterns = {"cadastrarUsuario.jsp"}, servletNames = {"", "IncluirContatoServlet"})
+@WebFilter(filterName = "PermissoesFilter", servletNames = {"cadastrarUsuario"}, urlPatterns = {"/cadastrarUsuario.jsp"})
 public class PermissoesFilter implements Filter {
 
     @Override
@@ -75,9 +75,9 @@ public class PermissoesFilter implements Filter {
      */
     private static boolean verificarAcesso(Usuario usuario, HttpServletRequest req, HttpServletResponse resp) {
         String pagina = req.getRequestURI();
-        if (pagina.endsWith("ListarContatosServlet") && usuario.autorizar("COMUM")) {
+        if (pagina.endsWith("cadastrarUsuario.jsp") && usuario.autorizar("COMUM")) {
             return true;
-        } else if (pagina.endsWith("IncluirContatoServlet") && usuario.autorizar("ADMIN")) {
+        } else if (pagina.endsWith("cadastrarUsuario.jsp") && usuario.autorizar("ADMIN")) {
             return true;
         }
         return false;

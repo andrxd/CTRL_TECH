@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Agenda Web - PI3</title>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-    <h1>Agenda Web</h1>
-    <h2>Exemplo de sistema web com Servlets e JSP</h2>
-    <p>Exemplo de listagem e inclusão de contatos no sistema</p>
-    <ul>
-      <li>Usa JavaDB como SGBD. Instruções para a criação do banco e o script para criação da tabela está no diretório META-INF.</li>
-      <li>Para login, usar os usuários "fulano" ou "ciclano", e a senha "abcd1234" (tudo sem aspas). O "fulano" tem permissões de administrador.</li>
-      <li>Neste exemplo, os usuários estão "mockeados", ou seja, não é feita consulta no banco de dados para autenticar o usuário.</li>
-      <li>Notar que, ao tentar acessar a lista de contatos sem login (mesmo colando a URL correta no browser), o sistema força um redirecionamento para a tela de login.</li>
-      <li>O contrário também é válido, ou seja, se o usuário logado tentar acessar a tela de login, o sistema o redireciona para a tela de listagem de contatos</li>
-      <li>Os arquivos css estão em /resources/css.</li>
-    </ul>
-    <a href="cadastrarUsuario.jsp">Acessar lista de contatos</a>&nbsp;<span>(Comparar a URL do Link e a URL que aparece na barra de endereço do browser)</span>
-  </body>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Login</title>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+
+
+    <body>
+
+        <div id="banner" align="center" >
+            <img src = "imagem/banner.png" width="800" height="200" >
+
+        </div>
+
+        <form method="post" action="Login" class="login">
+            <p>
+                <label for="login">Email:</label>
+                <input type="text" name="login" id="login">
+            </p>
+            <p>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" >
+            </p>
+            <p class="login-submit">
+                <button type="submit" class="login-button">Login</button>
+            </p>
+        </form>
+    </body>
 </html>
+

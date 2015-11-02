@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andre
  */
-@WebServlet(name = "cadastrarUsuarioServlet", urlPatterns = {"/cadastrarUsuario"})
+@WebServlet(name = "cadastrarUsuarioServlet"  ,urlPatterns = {"/cadastrarUsuarioServlet"})
 public class cadastrarUsuarioServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -40,8 +40,8 @@ public class cadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/cadatrarUsuario.jsp");
-        rd.forward(request, response);
+        //RequestDispatcher rd = request.getRequestDispatcher("/cadatrarUsuario.jsp");
+        //rd.forward(request, response);
 
     }
 
