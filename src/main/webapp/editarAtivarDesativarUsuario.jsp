@@ -98,9 +98,9 @@ and open the template in the editor.
                 <legend>TIPO DE USUÁRIO:</legend>
                 <table cellspacing="10">
 
-                    <input type="radio" name="usuario" value="comum" />Comum
-                    <input  type="radio" name="usuario" value="administrador"/>Administrador
-                    <input type="radio" name="usuario" value="suporte"/>Suporte
+                    <input type="radio" name="usuario" value="COMUM" />Comum
+                    <input  type="radio" name="usuario" value="ADMIN"/>Administrador
+                    <input type="radio" name="usuario" value="SUPORTE"/>Suporte
 
                 </table>
             </fieldset>
@@ -123,17 +123,9 @@ and open the template in the editor.
                             <label for="pass">Senha: </label>
                         </td>
                         <td align="left">
-                            <input type="password" id="pass" name="pass"/>
+                            <input type="password" id="pass" name="senha"/>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="passconfirm">Confirme a senha: </label>
-                        </td>
-                        <td align="left">
-                            <input type="password" id="passconfirm" name="passconfirm"/>
-                        </td>
-                    </tr>
+                    </tr>                  
                 </table>
             </fieldset>
             <br>
