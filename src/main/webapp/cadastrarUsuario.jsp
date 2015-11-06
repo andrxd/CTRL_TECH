@@ -45,17 +45,7 @@ and open the template in the editor.
                             <input type="text" id="nome" name="nome"/>
                         </td>
 
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>NASCIMENTO: </label>
-                        </td>
-                        <td align="left">
-                            <input type="text" id ="dia" name="dia" size="2" maxlength="2" value="dd"/> 
-                            <input type="text" id="mes" name="mes" size="2" maxlength="2" value="mm"/> 
-                            <input type="text" id="ano" name="ano" size="4" maxlength="4" value="aaaa"/>
-                        </td>
-                    </tr>
+                    </tr>                    
                     <tr>
                         <td>
                             <label for="rg">RG: </label>
@@ -88,9 +78,9 @@ and open the template in the editor.
             <fieldset>
                 <legend>TIPO DE USUÁRIO:</legend>
                 <table cellspacing="10">
-                    <input type="radio" name="usuario" value="comum" />Comum
-                    <input  type="radio" name="usuario" value="administrador"/>Administrador
-                    <input type="radio" name="usuario" value="suporte"/>Suporte
+                    <input type="radio" name="usuario" value="COMUM" />Comum
+                    <input  type="radio" name="usuario" value="ADMIN"/>Administrador
+                    <input type="radio" name="usuario" value="SUPORTE"/>Suporte
 
                 </table>
             </fieldset>
@@ -98,32 +88,17 @@ and open the template in the editor.
 
             <!-- DADOS DE LOGIN -->
             <fieldset>
-                <legend>DADOS DE ACESSO</legend>
-                <table cellspacing="10">
-                    <tr>
-                        <td>
-                            <label for="email">E-mail: </label>
-                        </td>
-                        <td align="left">
-                            <input type="text" id="email" name="email"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="pass">Senha: </label>
-                        </td>
-                        <td align="left">
-                            <input type="password" id="senha" name="senha"/>
-                        </td>
-                    </tr>
-
-                </table>
+                <legend>DADOS DE ACESSO</legend>                
+                        
+                            EMAIL: <input type="email" id="email" name="email"/><br>
+                            SENHA: <input type="password" id="senha" name="senha"/>     
+                            
             </fieldset>
             <br>
 
             <input type="submit" value="Cadastrar"/>
             <input type="button" value="Limpar" onClick="limpar()"/>
-            <p><a href="Logout">Sair</a>
         </form>
+        <p><a href="Logout">Sair</a>
     </body>
 </html>

@@ -9,44 +9,32 @@ import com.senac.tadas.pi3.ctrl_tech.Usuario;
 import com.senac.tadas.pi3.ctrl_tech.dao.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Andre
  */
-@WebServlet(name = "cadastrarUsuarioServlet", urlPatterns = {"/cadastrarUsuarioServlet"})
-public class cadastrarUsuarioServlet extends HttpServlet {
+@WebServlet(name = "EditarUsuarioServlet", urlPatterns = {"/EditarUsuarioServlet"})
+public class EditarUsuarioServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //RequestDispatcher rd = request.getRequestDispatcher("/cadatrarUsuario.jsp");
-        //rd.forward(request, response);
-
-    }
+ 
 
     /**
-     * Salva os dados digitados e faz redirect para a lista (POST-REDIRECT-GET)
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -57,24 +45,39 @@ public class cadastrarUsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String email = request.getParameter("email");
-        //String email2 = request.getParameter("ema");
         String nomeCompleto = request.getParameter("nome");
         //String dtNascimentoStr = request.getParameter("dtnascimento");
         String RG = request.getParameter("rg");
+        String email = request.getParameter("ema");
         String senha = request.getParameter("senha");
         String filial = request.getParameter("filial");
         String cargo = request.getParameter("cargo");
-        String tipoUsuario = request.getParameter("usuario");
+        String tipoUsuario = request.getParameter("tipoUsuario");
+        String status = request.getParameter("status"); 
+        int stat = Integer.parseInt(status);
 
-        Usuario user = new Usuario(email, senha, nomeCompleto, tipoUsuario, filial, cargo, RG);
+        Usuario user = new Usuario(email, senha, nomeCompleto, tipoUsuario, filial, cargo, RG, stat);
 
         try {
             UsuarioDAO dao = new UsuarioDAO();
-            dao.incluir(user);
-            response.sendRedirect("cadastrarUsuario.jsp");
+            dao.alterar(user);
+            System.out.println("Sucesso");
+            
+            response.sendRedirect("editarAtivarDesativarUsuario.jsp");
+            
         } catch (Exception e) {
-            response.sendRedirect("cadastrarUsuario.jsp");
+            response.sendRedirect("cadastrarUsuario");
         }
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }

@@ -46,7 +46,7 @@ and open the template in the editor.
 
                         </td>
                         <td>
-                            <input type="text" id="nome" name="emailBusca"/>
+                            <input type="text" id="nome" name="emailBusca" value="${user.email}"/>
                         </td>
                         <td>
                             <img src = "imagem/lupa.png" width="25" height="25">
@@ -89,7 +89,7 @@ and open the template in the editor.
                             <td>
                                 <label for="rg">CARGO: </label>
                             </td>
-                            <td align="left">
+                            <td align="left">                                
                                 <input type="text" id="cargo" name="cargo" value="${user.cargo}"/>
                             </td>
                         </tr>
@@ -133,10 +133,10 @@ and open the template in the editor.
                     <table cellspacing="10">
                         <tr>
                             <td>
-                                <label for="email" >E-mail: </label>
+                                <label for="emailUsuario" >E-mail: </label>
                             </td>
                             <td align="left">
-                                <input type="text"  name="emailUsuario" value="${user.email}" disabled="disabled"/>
+                                 <input type="text" id="email" name="ema" value="${user.email}"/>
                             </td>
                         </tr>
                         <tr>

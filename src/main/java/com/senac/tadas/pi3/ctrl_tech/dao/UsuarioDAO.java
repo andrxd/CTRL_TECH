@@ -6,6 +6,7 @@
 package com.senac.tadas.pi3.ctrl_tech.dao;
 
 import com.senac.tadas.pi3.ctrl_tech.Usuario;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -111,13 +112,13 @@ public class UsuarioDAO extends CommonDAO {
 
         return null;
     }
-    
+
     public Usuario buscarUsuario(String email) {
         Statement stmt = null;
         Connection conn = null;
 
         String sql = "select * from USUARIO\n"
-                + "WHERE EMAIL = '" + email +"'";
+                + "WHERE EMAIL = '" + email + "'";
 
         try {
             conn = obterConexao();
@@ -134,7 +135,7 @@ public class UsuarioDAO extends CommonDAO {
                 String tipoUsuarioBanco = resultados.getString("TipoUsuario");
                 int ativo = resultados.getInt("Ativo");
                 if (emailBanco.equals(email)) {
-                    Usuario User = new Usuario(emailBanco, senhaBanco, nomeCompleto, tipoUsuarioBanco, filialBanco, cargoBanco, rgBanco,ativo);
+                    Usuario User = new Usuario(emailBanco, senhaBanco, nomeCompleto, tipoUsuarioBanco, filialBanco, cargoBanco, rgBanco, ativo);
                     return User;
                 }
             }
@@ -160,11 +161,11 @@ public class UsuarioDAO extends CommonDAO {
 
         return null;
     }
-    
+
     public List<Usuario> buscarTodos() {
         // monta SQL 
         String sql = "SELECT * FROM USUARIO WHERE ATIVO=1";
-        Connection conn  = null;
+        Connection conn = null;
         // cria lista
         List<Usuario> lista = new ArrayList<>();
         try {
@@ -175,16 +176,16 @@ public class UsuarioDAO extends CommonDAO {
             ResultSet resultadoSelect = sqlcommandos.executeQuery();
 
             while (resultadoSelect.next()) {
-                Usuario user = new Usuario();         
+                Usuario user = new Usuario();
                 user.setEmail(resultadoSelect.getString("email"));
                 user.setSenha(resultadoSelect.getString("senha"));
                 user.setFilial(resultadoSelect.getString("filial"));
                 user.setNomeCompleto(resultadoSelect.getString("nomeCompleto"));
-                user.setRg(resultadoSelect.getString("rg")); 
+                user.setRg(resultadoSelect.getString("rg"));
                 user.setCargo(resultadoSelect.getString("cargo"));
-                user.setTipoUsuario(resultadoSelect.getString("TipoUsuario")); ;
+                user.setTipoUsuario(resultadoSelect.getString("TipoUsuario"));;
                 user.setAtivo(1);
-                
+
                 //adciona o objeto usuario que foi criado com os dados do banco pra vetor de obetos
                 lista.add(user);
             }
@@ -193,7 +194,7 @@ public class UsuarioDAO extends CommonDAO {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {           
+        } finally {
             if (conn != null) {
                 try {
                     conn.close();
@@ -202,17 +203,17 @@ public class UsuarioDAO extends CommonDAO {
                 }
             }
         }
-        
+
         return lista;
 
-    } 
+    }
 
     public void incluir(Usuario p) {
         PreparedStatement stmt = null;
         Connection conn = null;
 
         String sql = "INSERT INTO USUARIO (EMAIL, SENHA, " // ESPACO ANTES DO "
-                + "NOMECOMPLETO, RG, FILIAL, CARGO, TIPOUSUARIO) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                + "NOMECOMPLETO, RG, FILIAL, CARGO, TIPOUSUARIO,ATIVO) VALUES (?, ?, ?, ?, ?, ?, ?,1)";
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
@@ -245,30 +246,30 @@ public class UsuarioDAO extends CommonDAO {
         }
     }
 
-    public void alterar(Usuario usuario) {
+    public void alterar(Usuario usuario) throws SQLException, ClassNotFoundException {
 
-        String sql = "UPDATE USUARIO SET SENHA=?,NomeCompleto=?,RG=?,FILIAL=?,CARGO=?,TIPOUSUARIO=?,ATIVO=? where WHERE EMAIL = ? ";
+        String sql = "UPDATE USUARIO SET SENHA=?,NomeCompleto=?,RG=?,FILIAL=?,CARGO=?,TIPOUSUARIO=?,ATIVO=? WHERE EMAIL = ? ";
+
+        Connection con = obterConexao();
 
         try {
+            //constroi o PreparedStatement com o SQL
+            PreparedStatement sqlcommandos = con.prepareStatement(sql);
+            sqlcommandos.setString(1, usuario.getSenha());
+            sqlcommandos.setString(2, usuario.getNomeCompleto());
+            sqlcommandos.setString(3, usuario.getRg());
+            sqlcommandos.setString(4, usuario.getFilial());
+            sqlcommandos.setString(5, usuario.getCargo());
+            sqlcommandos.setString(6, usuario.getTipoUsuario());
+            sqlcommandos.setInt(7, usuario.getAtivo());
+            sqlcommandos.setString(8, usuario.getEmail());
 
-            Connection con = obterConexao();
-            try (PreparedStatement sqlcommandos = con.prepareStatement(sql)) {
+            sqlcommandos.execute();
+            sqlcommandos.close();
 
-                sqlcommandos.setString(1, usuario.getSenha());
-                sqlcommandos.setString(2, usuario.getNomeCompleto());
-                sqlcommandos.setString(3, usuario.getRg());
-                sqlcommandos.setString(4, usuario.getFilial());
-                sqlcommandos.setString(5, usuario.getCargo());
-                sqlcommandos.setString(6, usuario.getTipoUsuario());
-                sqlcommandos.setInt(7, usuario.getAtivo());
-                sqlcommandos.setString(8, usuario.getEmail());
-
-                sqlcommandos.execute();
-            }
+            System.out.println("usuario atualizado");
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
