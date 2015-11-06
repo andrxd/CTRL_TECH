@@ -75,6 +75,7 @@ and open the template in the editor.
                             </td>
                             <td align="left">
                                 <input type="text" id="rg" name="rg" maxlength="13" value="${user.rg}"/> 
+                                
                             </td>
                         </tr>
                         <tr>
@@ -130,24 +131,14 @@ and open the template in the editor.
                 <!-- DADOS DE LOGIN -->
                 <fieldset>
                     <legend>DADOS DE ACESSO</legend>
-                    <table cellspacing="10">
-                        <tr>
-                            <td>
-                                <label for="emailUsuario" >E-mail: </label>
-                            </td>
-                            <td align="left">
-                                 <input type="text" id="email" name="ema" value="${user.email}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="pass">Senha: </label>
-                            </td>
-                            <td align="left">
-                                <input type="password"  name="senha" value="${user.senha}" />
-                            </td>
-                        </tr>                  
-                    </table>
+                    
+                    <label for="email">Email </label>
+                    <input type="text"  name="email" value="${user.email}" />
+                    
+                    <label for="pass">Senha: </label>
+                    <input type="password"  name="senha" value="${user.senha}" />
+
+
                 </fieldset>
                 <br>
                 <fieldset>

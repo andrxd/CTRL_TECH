@@ -59,6 +59,7 @@ public class buscarUsuarioServlet extends HttpServlet {
         String email = emailUsuario;
         
         request.setAttribute("user", user);
+        request.setAttribute("emailUsuario", emailUsuario);
         //request.setAttribute("email", email);
         
         

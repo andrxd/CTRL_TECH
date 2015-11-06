@@ -48,14 +48,17 @@ public class EditarUsuarioServlet extends HttpServlet {
         String nomeCompleto = request.getParameter("nome");
         //String dtNascimentoStr = request.getParameter("dtnascimento");
         String RG = request.getParameter("rg");
-        String email = request.getParameter("ema");
+        String email = request.getParameter("email");
+        String email1 = request.getParameter("email");
+        String email2 = request.getParameter("em");        
         String senha = request.getParameter("senha");
         String filial = request.getParameter("filial");
         String cargo = request.getParameter("cargo");
         String tipoUsuario = request.getParameter("tipoUsuario");
         String status = request.getParameter("status"); 
+        //Object ema = request.getAttribute("emailUsuario");
         int stat = Integer.parseInt(status);
-
+        System.out.println(email1);
         Usuario user = new Usuario(email, senha, nomeCompleto, tipoUsuario, filial, cargo, RG, stat);
 
         try {
