@@ -38,112 +38,142 @@ and open the template in the editor.
         </nav>
         <!-- BARRA DE BUSCA DE PERFIS--> 
         <fieldset>
-            <table cellspacing="10">
-                <tr>
-                    <td>
-                        <label for="nome">DIGITE O EMAIL  USUARIO: </label>
-
-                    </td>
-                    <td>
-                        <input type="text" id="nome" name="busca"/>
-                    </td>
-                    <td>
-                        <img src = "imagem/lupa.png" width="25" height="25">
-
-                        <!--                        <input type="button" value="Listar Todos" onclick="" >-->
-                    </td>
-            </table>
-            <br><br>
-            <fieldset>
-                <legend>DADOS CADASTRAIS</legend>
+            <form method="get" action="buscarUsuarioServlet" class="login">
                 <table cellspacing="10">
                     <tr>
                         <td>
-                            <label for="nome">NOME COMPLETO: </label>
+                            <label for="nome">DIGITE O EMAIL  USUARIO: </label>
+
                         </td>
-                        <td align="left">
-                            <input type="text" id="nome" name="nome"/>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <label for="rg">RG: </label>
+                            <input type="text" id="nome" name="emailBusca"/>
                         </td>
-                        <td align="left">
-                            <input type="text" id="rg" name="rg" maxlength="13"/> 
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <label>FILIAL:</label>
+                            <img src = "imagem/lupa.png" width="25" height="25">
+                            <input type="submit" value="Buscar"/>
+                            <!--                        <input type="button" value="Listar Todos" onclick="" >-->
                         </td>
-                        <td align="left">
-                            <input type="text" id="filial" name="filial"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="rg">CARGO: </label>
-                        </td>
-                        <td align="left">
-                            <input type="text" id="cargo" name="cargo"/>
-                        </td>
-                    </tr>
                 </table>
-            </fieldset>
+            </form>
 
-            <br />
-            <!-- ENDEREÇO -->
-            <fieldset>
-                <legend>TIPO DE USUÁRIO:</legend>
-                <table cellspacing="10">
+            <br><br>            
+            <form method="POST" action="EditarUsuarioServlet" class="login">
+                <fieldset>
+                    <legend>DADOS CADASTRAIS</legend>
+                    <table cellspacing="10">
+                        <tr>
+                            <td>
+                                <label for="nome">NOME COMPLETO: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" id="nome" name="nome" value="${user.nomeCompleto}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="rg">RG: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" id="rg" name="rg" maxlength="13" value="${user.rg}"/> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>FILIAL:</label>
+                            </td>
+                            <td align="left">
+                                <input type="text" id="filial" name="filial" value="${user.filial}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="rg">CARGO: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" id="cargo" name="cargo" value="${user.cargo}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
 
-                    <input type="radio" name="usuario" value="COMUM" />Comum
-                    <input  type="radio" name="usuario" value="ADMIN"/>Administrador
-                    <input type="radio" name="usuario" value="SUPORTE"/>Suporte
+                <br />
+                <!-- ENDEREÇO -->
+                <fieldset>
+                    <legend>TIPO DE USUÁRIO:</legend>
+                    <table cellspacing="10">                        
+                        <c:choose>
+                            <c:when test="${user.tipoUsuario=='COMUM'}">
+                                <input type="radio" name="tipoUsuario" value="COMUM" CHECKED>Comum
+                                <input  type="radio" name="tipoUsuario" value="ADMIN" >Administrador
+                                <input type="radio" name="tipoUsuario" value="SUPORTE">Suporte
+                            </c:when>
+                            <c:when test="${user.tipoUsuario=='ADMIN'}">
+                                <input type="radio" name="tipoUsuario" value="COMUM" >Comum
+                                <input  type="radio" name="tipoUsuario" value="ADMIN" CHECKED>Administrador
+                                <input type="radio" name="tipoUsuario" value="SUPORTE">Suporte
+                            </c:when>
+                            <c:when test="${user.tipoUsuario=='SUPORTE'}">
+                                <input type="radio" name="tipoUsuario" value="COMUM" >Comum
+                                <input  type="radio" name="tipoUsuario" value="ADMIN" >Administrador
+                                <input type="radio" name="tipoUsuario" value="SUPORTE" CHECKED>Suporte
+                            </c:when>
+                            <c:otherwise>
+                                <input type="radio" name="tipoUsuario" value="COMUM" CHECKED>Comum
+                                <input  type="radio" name="tipoUsuario" value="ADMIN" >Administrador
+                                <input type="radio" name="tipoUsuario" value="SUPORTE" >Suporte
+                            </c:otherwise>
+                        </c:choose>
+                    </table>
+                </fieldset>
+                <br />
 
-                </table>
-            </fieldset>
-            <br />
-
-            <!-- DADOS DE LOGIN -->
-            <fieldset>
-                <legend>DADOS DE ACESSO</legend>
-                <table cellspacing="10">
-                    <tr>
-                        <td>
-                            <label for="email">E-mail: </label>
-                        </td>
-                        <td align="left">
-                            <input type="text" id="email" name="email"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="pass">Senha: </label>
-                        </td>
-                        <td align="left">
-                            <input type="password" id="pass" name="senha"/>
-                        </td>
-                    </tr>                  
-                </table>
-            </fieldset>
-            <br>
-            <fieldset>
-                <legend>STATUS DA CONTA:</legend>
-                <table cellspacing="10">
-
-                    <input type="radio" name="status" value="Ativo" />Ativo
-                    <input  type="radio" name="status" value="Desativo"/>Desativo
-
-
-                </table>
-            </fieldset>
-            <center>
-                <input type="button" value="Salvar" onClick="enviar()"/>
-                <input type="button" value="Limpar" onClick="limpar()"/>
-                <input type="button" value="Voltar" onClick=""/>
-            </center> 
-
+                <!-- DADOS DE LOGIN -->
+                <fieldset>
+                    <legend>DADOS DE ACESSO</legend>
+                    <table cellspacing="10">
+                        <tr>
+                            <td>
+                                <label for="email" >E-mail: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text"  name="emailUsuario" value="${user.email}" disabled="disabled"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="pass">Senha: </label>
+                            </td>
+                            <td align="left">
+                                <input type="password"  name="senha" value="${user.senha}" />
+                            </td>
+                        </tr>                  
+                    </table>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>STATUS DA CONTA:</legend>
+                    <table cellspacing="10">
+                        <c:choose>
+                            <c:when test="${user.ativo==1}">
+                                <input type="radio" name="status" value="1" CHECKED>Ativo                        
+                                <input  type="radio" name="status" value="0"  >Desativo
+                            </c:when>
+                            <c:when test="${user.ativo==0}">
+                                <input type="radio" name="status" value="1" >Ativo                        
+                                <input  type="radio" name="status" value="0"  CHECKED>Desativo
+                            </c:when>
+                            <c:otherwise>
+                                <input type="radio" name="status" value="1" >Ativo                        
+                                <input  type="radio" name="status" value="0" CHECKED>Desativo
+                            </c:otherwise>
+                        </c:choose>
+                    </table>                
+                </fieldset>
+                <center>
+                    <input type="Submit" value="Salvar" onClick="enviar()"/>
+                    <input type="button" value="Limpar" onClick="limpar()"/>
+                    <input type="button" value="Voltar" onClick=""/>
+                </center> 
+            </form>
     </body>
 </html>
