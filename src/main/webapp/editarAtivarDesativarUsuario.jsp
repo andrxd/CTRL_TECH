@@ -59,9 +59,9 @@ and open the template in the editor.
                     
                     <div>
                         <label>PERFIL: </label>
-                        <select id="perfil"  value="0" >
+                        <select id="perfil"  >
                             <option value="1" >Ativo</option>
-                            <option value="0" SELECTED>Inativo</option>
+                            <option value="0" selected="selected">Inativo</option>
                         </select> 
                     </div>
                 </fieldset>
