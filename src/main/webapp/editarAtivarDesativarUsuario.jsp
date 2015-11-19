@@ -1,9 +1,3 @@
-<%-- 
-    Document   : editarAtivarDesativarUsuario
-    Created on : Nov 1, 2015, 10:31:51 PM
-    Author     : Andre
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -12,159 +6,100 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
 <html>
     <head>
-        <title>Tela de Cadastro do Usuário</title>
+        <title>Tela de Controle de Usuário</title>
         <meta charset="UTF-8">
         <link href="css/menu.css"  rel="stylesheet" type="text/css" />
-        <script src="menu.js" type="text/javascript"></script>
+        <script src="javascript/menu.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <div class="central">
+            <!-- BANNER CENTRALIZADO -->
+            <div id="banner">
+                <img src = "imagem/max banner.jpg" >
+            </div>
+            <!--            MENU DO SUPORTE-->
 
-        <!-- BANNER CENTRALIZADO -->
-        <div id="banner" align="center" >
-            <img src = "imagem/banner.png" width="800" height="200" >
-
-        </div>
-
-        <nav>
-            <ul>
-                <li><span class="CadastrarUsuarios"></span><a href="#">CADASTRAR USUARIO</a></li>
-                <li><span class="EditarUsuarios"></span><a href="#">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-
-            </ul>
-        </nav>
-        <!-- BARRA DE BUSCA DE PERFIS--> 
-        <fieldset>
-            <form method="get" action="buscarUsuarioServlet" class="login">
-                <table cellspacing="10">
-                    <tr>
-                        <td>
-                            <label for="nome">DIGITE O EMAIL  USUARIO: </label>
-
-                        </td>
-                        <td>
-                            <input type="text" id="nome" name="emailBusca" value="${user.email}"/>
-                        </td>
-                        <td>
-                            <img src = "imagem/lupa.png" width="25" height="25">
-                            <input type="submit" value="Buscar"/>
-                            <!--                        <input type="button" value="Listar Todos" onclick="" >-->
-                        </td>
-                </table>
-            </form>
-
-            <br><br>            
+            <nav id="menu">
+                <ul>
+                    <li><a href="#">CADASTRAR USUARIO</a></li>
+                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
+                </ul>
+            </nav>
+            <br/>
+			<form method="get" action="buscarUsuarioServlet" class="login">
+            <fieldset>
+                <label>DIGITE O EMAIL DO USUARIO: </label>
+                <input type="text" id="busca" name="emailBusca"/>
+                <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>				
+            </fieldset>
+			</form>
             <form method="POST" action="EditarUsuarioServlet" class="login">
                 <fieldset>
                     <legend>DADOS CADASTRAIS</legend>
-                    <table cellspacing="10">
-                        <tr>
-                            <td>
-                                <label for="nome">NOME COMPLETO: </label>
-                            </td>
-                            <td align="left">
-                                <input type="text" id="nome" name="nome" value="${user.nomeCompleto}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="rg">RG: </label>
-                            </td>
-                            <td align="left">
-                                <input type="text" id="rg" name="rg" maxlength="13" value="${user.rg}"/> 
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>FILIAL:</label>
-                            </td>
-                            <td align="left">
-                                <input type="text" id="filial" name="filial" value="${user.filial}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="rg">CARGO: </label>
-                            </td>
-                            <td align="left">                                
-                                <input type="text" id="cargo" name="cargo" value="${user.cargo}"/>
-                            </td>
-                        </tr>
-                    </table>
+                    <div>
+                        <label>NOME COMPLETO: </label>
+                        <input type="text" class="cadastro" id="nome" name="nome" value="${user.nomeCompleto}"/>
+                    </div>
+                    <div>
+                        <label>RG: </label>
+                        <input type="text" class="cadastro" id="rg" name="rg" value="${user.rg}" maxlength="13"/> 
+                    </div>
+
+                    <div>
+                        <label>FILIAL:</label>
+                        <input type="text" class="cadastro" id="filial" name="filial" value="${user.filial}"/>
+                    </div>
+                    <div>
+                        <label>CARGO: </label>
+                        <input type="text" class="cadastro" id="cargo" name="cargo" value="${user.cargo}" />
+                    </div>
+                    
+                    <div>
+                        <label>PERFIL: </label>
+                        <select id="perfil"  value="0" >
+                            <option value="1" >Ativo</option>
+                            <option value="0" SELECTED>Inativo</option>
+                        </select> 
+                    </div>
                 </fieldset>
 
-                <br />
-                <!-- ENDEREÇO -->
+                <!-- PERFIL USUARIO -->
                 <fieldset>
-                    <legend>TIPO DE USUÁRIO:</legend>
-                    <table cellspacing="10">                        
-                        <c:choose>
-                            <c:when test="${user.tipoUsuario=='COMUM'}">
-                                <input type="radio" name="tipoUsuario" value="COMUM" CHECKED>Comum
-                                <input  type="radio" name="tipoUsuario" value="ADMIN" >Administrador
-                                <input type="radio" name="tipoUsuario" value="SUPORTE">Suporte
-                            </c:when>
-                            <c:when test="${user.tipoUsuario=='ADMIN'}">
-                                <input type="radio" name="tipoUsuario" value="COMUM" >Comum
-                                <input  type="radio" name="tipoUsuario" value="ADMIN" CHECKED>Administrador
-                                <input type="radio" name="tipoUsuario" value="SUPORTE">Suporte
-                            </c:when>
-                            <c:when test="${user.tipoUsuario=='SUPORTE'}">
-                                <input type="radio" name="tipoUsuario" value="COMUM" >Comum
-                                <input  type="radio" name="tipoUsuario" value="ADMIN" >Administrador
-                                <input type="radio" name="tipoUsuario" value="SUPORTE" CHECKED>Suporte
-                            </c:when>
-                            <c:otherwise>
-                                <input type="radio" name="tipoUsuario" value="COMUM" CHECKED>Comum
-                                <input  type="radio" name="tipoUsuario" value="ADMIN" >Administrador
-                                <input type="radio" name="tipoUsuario" value="SUPORTE" >Suporte
-                            </c:otherwise>
-                        </c:choose>
-                    </table>
-                </fieldset>
-                <br />
+                    <legend>TIPO DE USUÁRIO</legend>
+                    <label>PERFIL: </label>
 
+                    <select id="perfil" name="tipoUsuario">
+                        <option value="COMUM">Comum</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="SUPORTE">Suporte</option>
+                    </select> 
+                </fieldset>
                 <!-- DADOS DE LOGIN -->
                 <fieldset>
                     <legend>DADOS DE ACESSO</legend>
-                    
-                    <label for="email">Email </label>
-                    <input type="text"  name="email" value="${user.email}" />
-                    
-                    <label for="pass">Senha: </label>
-                    <input type="password"  name="senha" value="${user.senha}" />
 
+                    <div>
+                        <label>E-mail: </label>
+                        <input type="text" class="cadastro" id="email" name="email"/>
+                    </div>
+
+                    <div>
+                        <label>Senha: </label>
+                        <input type="password" class="cadastro" id="pass" name="pass"/>
+                    </div>
 
                 </fieldset>
-                <br>
-                <fieldset>
-                    <legend>STATUS DA CONTA:</legend>
-                    <table cellspacing="10">
-                        <c:choose>
-                            <c:when test="${user.ativo==1}">
-                                <input type="radio" name="status" value="1" CHECKED>Ativo                        
-                                <input  type="radio" name="status" value="0"  >Desativo
-                            </c:when>
-                            <c:when test="${user.ativo==0}">
-                                <input type="radio" name="status" value="1" >Ativo                        
-                                <input  type="radio" name="status" value="0"  CHECKED>Desativo
-                            </c:when>
-                            <c:otherwise>
-                                <input type="radio" name="status" value="1" >Ativo                        
-                                <input  type="radio" name="status" value="0" CHECKED>Desativo
-                            </c:otherwise>
-                        </c:choose>
-                    </table>                
-                </fieldset>
-                <center>
-                    <input type="Submit" value="Salvar" onClick="enviar()"/>
-                    <input type="button" value="Limpar" onClick="limpar()"/>
-                    <input type="button" value="Voltar" onClick=""/>
-                </center> 
-            </form>
+                
+                <div class="botoes">
+                    <button class="botoesazul" type="button">Salvar</button>
+                    <button class="botoesvermelho" type="button">Limpar</button>
+                    <button class="botoeslaranja" type="button">Voltar</button>
+                </div>
+			</form>
+        </div>
+
     </body>
 </html>
