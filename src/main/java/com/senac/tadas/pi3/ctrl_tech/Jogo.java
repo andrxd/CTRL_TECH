@@ -4,7 +4,7 @@ public class Jogo extends Produto {
 
     private String genero;
 
-    private int faixaEtaria;
+    private String faixaEtaria;
 
     private String plataforma;
 
@@ -12,16 +12,13 @@ public class Jogo extends Produto {
     }
 
     
-    public Jogo(String genero, int faixaEtaria, String plataforma, String codigoBarra, String nome, String descricao, double valor, int qtdAtual, int qtdMinima, int qtdMaxima, String tipo, int status) {
+    public Jogo(String genero, String faixaEtaria, String plataforma, String codigoBarra, String nome, String descricao, double valor, int qtdAtual, int qtdMinima, int qtdMaxima, String tipo, int status) {
         super(codigoBarra, nome, descricao, valor, qtdAtual, qtdMinima, qtdMaxima, tipo, status);
         this.genero = genero;
         this.faixaEtaria = faixaEtaria;
         this.plataforma = plataforma;
     }
-
-    public Jogo(String genero, String faixaetaria, String plataforma, String codigoBarra, String nome, String descricao, double valor, int quantidadeAtual, int quantidadeMinima, int quantidadeMaxima, String tipo, int status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
 
     public String getGenero() {
         return genero;
@@ -31,11 +28,11 @@ public class Jogo extends Produto {
         this.genero = genero;
     }
 
-    public int getFaixaEtaria() {
+    public String getFaixaEtaria() {
         return faixaEtaria;
     }
 
-    public void setFaixaEtaria(int faixaEtaria) {
+    public void setFaixaEtaria(String faixaEtaria) {
         this.faixaEtaria = faixaEtaria;
     }
 

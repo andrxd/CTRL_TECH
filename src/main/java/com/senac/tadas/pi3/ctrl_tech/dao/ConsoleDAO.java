@@ -71,19 +71,19 @@ public class ConsoleDAO extends CommonDAO {
         return null;
     }
 
-    public void incluir(Jogo p) {
+    public void incluir(Console p) {
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "INSERT INTO PRODUTO ( fabricante, armazenamento, armazenamento ,codBarra, nome, descricao, valor, QUANTIDADEAtual, QUANTIDADEMinima,QUANTIDADEMaxima,TIPO,STATUS \n"
-                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+        String sql = "INSERT INTO PRODUTO ( fabricante, armazenamento, garantia ,codBarra, nome, descricao, valor, QUANTIDADEAtual, QUANTIDADEMinima,QUANTIDADEMaxima,TIPO,STATUS"
+                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, p.getGenero());
-            stmt.setInt(2, p.getFaixaEtaria());
-            stmt.setString(3, p.getPlataforma());
+            stmt.setString(1, p.getFabricanteString());
+            stmt.setString(2, p.getArmazenamento());
+            stmt.setString(3, p.getGarantia());
             stmt.setString(4, p.getCodigoBarra());
             stmt.setString(5, p.getNome());
             stmt.setString(6, p.getDescricao());
@@ -115,9 +115,9 @@ public class ConsoleDAO extends CommonDAO {
         }
     }
 
-    public void alterar(Jogo jogo) throws SQLException, ClassNotFoundException {
+    public void alterar(Console console) throws SQLException, ClassNotFoundException {
 
-        String sql = "UPDATE USUARIO SET genero=?, faixaetaria=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
+        String sql = "UPDATE PRODUTO SET fabricante=?, armazenamento=?, garantia=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
 
         Connection con = obterConexao();
 
@@ -125,18 +125,17 @@ public class ConsoleDAO extends CommonDAO {
             //constroi o PreparedStatement com o SQL
             PreparedStatement stmt = con.prepareStatement(sql);
             
-            stmt.setString(1, jogo.getGenero());
-            stmt.setInt(2, jogo.getFaixaEtaria());
-            stmt.setString(3, jogo.getPlataforma());            
-            stmt.setString(4, jogo.getNome());
-            stmt.setString(5, jogo.getDescricao());
-            stmt.setDouble(6, jogo.getValor());
-            stmt.setInt(7, jogo.getQtdAtual());
-            stmt.setInt(8, jogo.getQtdMinima());
-            stmt.setInt(9, jogo.getQtdMaxima());
-            stmt.setString(10, jogo.getTipo());
-            stmt.setInt(11, jogo.getStatus());
-            stmt.setString(12, jogo.getCodigoBarra());
+            stmt.setString(1, console.getFabricanteString());
+            stmt.setString(2, console.getArmazenamento());
+            stmt.setString(3, console.getGarantia());            
+            stmt.setString(4, console.getNome());
+            stmt.setString(5, console.getDescricao());
+            stmt.setDouble(6, console.getValor());
+            stmt.setInt(7, console.getQtdAtual());
+            stmt.setInt(8, console.getQtdMinima());
+            stmt.setInt(9, console.getQtdMaxima());            
+            stmt.setInt(10, console.getStatus());
+            stmt.setString(11, console.getCodigoBarra());
 
             stmt.execute();
             stmt.close();

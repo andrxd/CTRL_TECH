@@ -113,7 +113,7 @@ public class AcessorioDAO extends CommonDAO {
 
     public void alterar(Acessorio acessorio) throws SQLException, ClassNotFoundException {
 
-        String sql = "UPDATE USUARIO SET marca=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
+        String sql = "UPDATE PRODUTO SET marca=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
 
         Connection con = obterConexao();
 

@@ -75,13 +75,13 @@ public class JogoDAO extends CommonDAO {
         Connection conn = null;
 
         String sql = "INSERT INTO PRODUTO ( genero, faixaetaria, plataforma ,codBarra, nome, descricao, valor, QUANTIDADEAtual, QUANTIDADEMinima,QUANTIDADEMaxima,TIPO,STATUS \n"
-                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, p.getGenero());
-            stmt.setInt(2, p.getFaixaEtaria());
+            stmt.setString(2, p.getFaixaEtaria());
             stmt.setString(3, p.getPlataforma());
             stmt.setString(4, p.getCodigoBarra());
             stmt.setString(5, p.getNome());
@@ -116,7 +116,7 @@ public class JogoDAO extends CommonDAO {
 
     public void alterar(Jogo jogo) throws SQLException, ClassNotFoundException {
 
-        String sql = "UPDATE USUARIO SET genero=?, faixaetaria=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
+        String sql = "UPDATE PRODUTO SET genero=?, faixaetaria=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
 
         Connection con = obterConexao();
 
@@ -125,7 +125,7 @@ public class JogoDAO extends CommonDAO {
             PreparedStatement stmt = con.prepareStatement(sql);
             
             stmt.setString(1, jogo.getGenero());
-            stmt.setInt(2, jogo.getFaixaEtaria());
+            stmt.setString(2, jogo.getFaixaEtaria());
             stmt.setString(3, jogo.getPlataforma());            
             stmt.setString(4, jogo.getNome());
             stmt.setString(5, jogo.getDescricao());
