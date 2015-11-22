@@ -61,24 +61,16 @@ and open the template in the editor.
                         <div>
                             <label>QUANTIDADE: </label>
                             <input type="text" class="acessorio" id="valor" name="quantidade"/>
-                        </div>
-                        <div>
-                            <label>DESENVOLVEDORA: </label>
-                            <input type="text" class="acessorio" id="desenvolvedora" name="desenvolvedora"/>
-                        </div>
-                        <div>
-                            <label>GARANTIA: </label>
-                            <input type="text" class="acessorio" id="garantia" name="garantia"/>
-                        </div>
+                        </div> 
                         <div>
                             <label>PLATAFORMA: </label>
 
                             <select id="consolebox" name="console" >
-                                <option value="Playstation3">Playstation 3</option>
-                                <option value="Playstation4">Playstation 4</option>
-                                <option value="Xbox360">Xbox 360</option>
-                                <option value="Xboxone">Xbox One</option>
-                                <option value="PC">Computador</option>
+                                <option value="Playstation 3">Playstation 3</option>
+                                <option value="Playstation 4">Playstation 4</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="PC">PC</option>
 
                             </select> 
                         </div>

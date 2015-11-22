@@ -29,80 +29,92 @@ and open the template in the editor.
                     <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
                 </ul>
             </nav><br/>
+            <fieldset>
+                <form method="get" action="buscarJogoServlet" >
+                    <label for="nome">DIGITE O COD. DE BARRA DO PRODUTO: </label>
+                    <input type="text" id="nome" name="busca"/>
+                    <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>	
+                </form>
+            </fieldset>
+            <form method="POST" action="cadastrarJogoServlet" >
+                <div id="jogo">
+                    <fieldset>
+                        <legend><b>DADOS DO JOGO</b></legend>
+                        <div>
+                            <label >CÃD DE BARRA: </label>
+                            <input type="text" class="jogo" value="${prod.codigoBarra}" id="codbarra" name="codbarra"/>
+                        </div>
+                        <div>
+                            <label >NOME: </label>
+                            <input type="text"  value="${prod.nome}" class="jogo" id="nome" name="nome"/> 
+                        </div>
+                        <div>
+                            <label>VALOR: </label>
+                            <input type="text" class="jogo" value="${prod.valor}" id="valor" name="valor"/>
+                        </div>                      
+                        <div>
+                            <label>QUANTIDADE: </label>
+                            <input type="text" class="jogo" id="armazenamento" value="${prod.qtdAtual}" name="quantidade"/>
 
-            <div id="jogo">
-                <fieldset>
-                    <legend><b>DADOS DO JOGO</b></legend>
-                    <div>
-                        <label >CÃD DE BARRA: </label>
-                        <input type="text" class="jogo" id="codbarra" name="codbarra"/>
-                    </div>
-                    <div>
-                        <label >NOME: </label>
-                        <input type="text"  class="jogo" id="nome" name="nome"/> 
-                    </div>
-                    <div>
-                        <label>VALOR: </label>
-                        <input type="text" class="jogo" id="valor" name="valor"/>
-                    </div>
-                    <div>
-                        <label>DESENVOLVEDORA: </label>
-                        <input type="text" class="jogo" id="desenvolvedora" name="desenvolvedora"/>
-                    </div>
-                    <div>
-                        <label>GARANTIA: </label>
-                        <input type="text" class="jogo" id="garantia" name="garantia"/>
-                    </div>
-                    <div>
-                        <label>ARMAZENAMENTO: </label>
-                        <input type="text" class="jogo" id="armazenamento" name="armazenamento"/>
+                        </div>
+                        <div>
+                            <label>GÃNERO: </label>
+                            <input type="text" class="jogo" id="genero" value="${prod.genero}" name="genero"/>
 
-                    </div>
-                    <div>
-                        <label>GÃNERO: </label>
-                        <input type="text" class="jogo" id="genero" name="genero"/>
+                        </div>
+                        <div>
+                            <label>FAIXA ETARIA: </label>
+                            <input type="text" class="jogo" id="faixaetaria" value="${prod.faixaEtaria}" name="faixaetaria"/>
 
-                    </div>
-                    <div>
-                        <label>FAIXAETARIA: </label>
-                        <input type="text" class="jogo" id="faixaetaria" name="faixaetaria"/>
+                        </div>
+                        <div>
+                            <label>PLATAFORMA: </label>
 
-                    </div>
-                    <div>
-                        <label>PLATAFORMA: </label>
+                            <select id="consolebox" name="plataforma" >
+                                <option value="${prod.plataforma}" >${prod.plataforma}</option>
+                                <option value="Playstation 3">Playstation 3</option>
+                                <option value="Playstation 4">Playstation 4</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="PC">PC</option>
 
-                        <select id="consolebox" >
-                            <option value="Playstation3">Playstation 3</option>
-                            <option value="Playstation4">Playstation 4</option>
-                            <option value="Xbox360">Xbox 360</option>
-                            <option value="Xboxone">Xbox One</option>
-                            <option value="PC">Computador</option>
+                            </select> 
+                        </div>
+                        <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
 
-                        </select> 
-                    </div>
-                    <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
+                        <div>
+                            <label>STATUS DO PRODUTO: </label>
+                            <c:choose>
+                                <c:when test="${prod.status=='1'}">
+                                    <select id="perfil"  name="status">
+                                        <option value="1" selected="selected">Ativo</option>
+                                        <option value="0" >Inativo</option>
+                                    </select>
+                                </c:when>                     
+                                <c:otherwise>
+                                    <select id="perfil" name="status" >
+                                        <option value="1" >Ativo</option>
+                                        <option value="0" selected="selected">Inativo</option>
+                                    </select>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
 
-                    <div>
-                        <label>STATUS DO PRODUTO: </label>
+                        <div>
+                            <label>DESCRIÃÃO: </label>
+                        </div>
+                        <div>
+                            <textarea name="descricao" value="${prod.descricao}"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40"></textarea>
+                        </div>
+                    </fieldset>
+                </div>
 
-                        <select id="statusbox" >
-                            <option value="Ativo">Ativo</option>
-                            <option value="Desativo">Desativo</option>
-                        </select> 
-                    </div>
-
-                    <div>
-                        <label>DESCRIÃÃO: </label>
-                    </div>
-                    <div >
-                        <textarea name="descricao"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40"></textarea>
-                    </div>
-            </div>
-            <div class="botoes">
-                <button class="botoesazul" type="button">Salvar</button>
-                <button class="botoesvermelho" type="button">Limpar</button>
-                <button class="botoeslaranja" type="button">Voltar</button>
-            </div>
+                <div class="botoes">
+                    <button class="botoesazul" type="Submit">Salvar</button>
+                    <button class="botoesvermelho" type="button">Limpar</button>
+                    <button class="botoeslaranja" type="button">Voltar</button>
+                </div>
+            </form>
         </div>
 
     </body>

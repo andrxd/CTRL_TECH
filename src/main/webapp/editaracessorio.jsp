@@ -8,7 +8,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Tela de Cadastro do UsuÃ¡rio</title>
+        <title>Editar Acessorio</title>
         <meta charset="UTF-8">
         <link href="css/menu.css"  rel="stylesheet" type="text/css" />
         <script src="javascript/menu.js" type="text/javascript"></script>
@@ -30,71 +30,92 @@ and open the template in the editor.
                 </ul>
             </nav><br/>
             <fieldset>
-                <label for="nome">DIGITE O NOME OU CÃD. DE BARRA DO PRODUTO: </label>
-                <input type="text" id="nome" name="busca"/>
-                <img src = "imagem/lupa.png" width="25" height="23">
+                <form method="get" action="buscarAcessorioServlet" >
+                    <label for="nome">DIGITE O COD. DE BARRA DO PRODUTO: </label>
+                    <input type="text" id="nome" name="busca"/>
+                    <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>	
+                </form>
             </fieldset>
-            <div id="acessorio">
-                <fieldset>
-                    <legend><b>DADOS DO ACESSÃRIO</b></legend>
-                    <div>
-                        <label >CÃD DE BARRA: </label>
-                        <input type="text" class="acessorio" id="codbarra" name="codbarra"/>
-                    </div>
-                    <div>
-                        <label >NOME: </label>
-                        <input type="text"  class="acessorio" id="nome" name="nome" maxlength="13"/> 
-                    </div>
-                    <div>
-                        <label>VALOR: </label>
-                        <input type="text" class="acessorio" id="valor" name="valor"/>
-                    </div>
-                    <div>
-                        <label>DESENVOLVEDORA: </label>
-                        <input type="text" class="acessorio" id="desenvolvedora" name="desenvolvedora"/>
-                    </div>
-                    <div>
-                        <label>GARANTIA: </label>
-                        <input type="text" class="acessorio" id="garantia" name="garantia"/>
-                    </div>
-                    <div>
-                        <label>PLATAFORMA: </label>
+            <form method="POST" action="editarAcessorioServlet" class="login">
+                <div id="acessorio">
+                    <fieldset>
+                        <legend><b>DADOS DO ACESSORIO</b></legend>
+                        <div>
+                            <label >COD DE BARRA:        <c:out value="${prod.codigoBarra}"/>. </label>                            
+                            <input type="hidden"  value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
+                        </div>
+                        <div>
+                            <label >NOME: </label>
+                            <input type="text"  class="acessorio" id="nome" value="${prod.nome}" name="nome" maxlength="25"/> 
+                        </div>
+                        <div>
+                            <label >MARCA: </label>
+                            <input type="text"  class="acessorio" id="nome" value="${prod.marca}" name="marca" maxlength="25"/> 
+                        </div>
+                        <div>
+                            <label >PLATAFORMA: </label>
+                            <input type="text"  class="acessorio" id="nome"  value="${prod.plataforma}" name="plataforma" maxlength="25"/> 
+                        </div>
+                        <div>
+                            <label>VALOR: </label>
+                            <input type="text" class="acessorio" id="valor" value="${prod.valor}" name="valor"/>
+                        </div>
+                        <div>
+                            <label>QUANTIDADE: </label>
+                            <input type="text" class="acessorio" id="valor" value="${prod.qtdAtual}" name="qtdAtual"/>
+                        </div>
+                        <div>
+                            <label>PLATAFORMA: </label>
 
-                        <select id="consolebox" name="console" >
-                            <option value="Playstation3">Playstation 3</option>
-                            <option value="Playstation4">Playstation 4</option>
-                            <option value="Xbox360">Xbox 360</option>
-                            <option value="Xboxone">Xbox One</option>
-                            <option value="PC">Computador</option>
+                            <select id="consolebox" name="plataforma" >
+                                <option value="${prod.plataforma}" >${prod.plataforma}</option>
+                                <option value="Playstation 3">Playstation 3</option>
+                                <option value="Playstation 4">Playstation 4</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="PC">PC</option>
 
-                        </select> 
-                    </div>
-                    
-                       <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
- 
-                    <div>
-                        <label>STATUS DO PRODUTO: </label>
+                            </select> 
+                        </div>
 
-                        <select id="statusbox" name="status" >
-                            <option value="0">Ativo</option>
-                            <option value="1">Desativo</option>
-                        </select> 
-                    </div>
+                        <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
 
-                    <div>
-                        <label>DESCRIÃÃO: </label>
-                    </div>
-                    <div >
-                        <textarea name="descricao"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40"></textarea>
-                    </div>
-                </fieldset>
-            </div>
+                        <div>
+                            <label>STATUS DO PRODUTO: </label>
+                            <c:choose>
+                                <c:when test="${prod.status=='1'}">
+                                    <select id="perfil"  name="status">
+                                        <option value="1" selected="selected">Ativo</option>
+                                        <option value="0" >Inativo</option>
+                                    </select>
+                                </c:when>                     
+                                <c:otherwise>
+                                    <select id="perfil" name="status" >
+                                        <option value="1" >Ativo</option>
+                                        <option value="0" selected="selected">Inativo</option>
+                                    </select>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
 
-            <div class="botoes">
-                <button  class="botoesazul" type="submit">Salvar</button>
-                <button class="botoesvermelho" type="button">Limpar</button>
-                <button class="botoeslaranja" type="button">Voltar</button>
-            </div>
+                        <div>
+                            <label>DESCRIÃÃO: </label>
+                        </div>
+                        <div >
+                            <textarea name="descricao"  value="${prod.descricao}" class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40" ></textarea>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+                <div class="botoes">
+                    <button  class="botoesazul" type="submit">Salvar</button>
+                    <button class="botoesvermelho" type="button">Limpar</button>
+                    <button class="botoeslaranja" type="button">Voltar</button>
+                </div>
+            </form>
+
         </div>
+
     </body>
 </html>

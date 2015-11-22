@@ -44,15 +44,7 @@ and open the template in the editor.
                         <div>
                             <label>VALOR: </label>
                             <input type="text" class="jogo" id="valor" name="valor"/>
-                        </div>
-                        <div>
-                            <label>DESENVOLVEDORA: </label>
-                            <input type="text" class="jogo" id="desenvolvedora" name="desenvolvedora"/>
-                        </div>
-                        <div>
-                            <label>GARANTIA: </label>
-                            <input type="text" class="jogo" id="garantia" name="garantia"/>
-                        </div>
+                        </div>                                           
                         <div>
                             <label>ARMAZENAMENTO: </label>
                             <input type="text" class="jogo" id="armazenamento" name="armazenamento"/>
@@ -77,11 +69,11 @@ and open the template in the editor.
                             <label>PLATAFORMA: </label>
 
                             <select id="consolebox" name="plataforma" >
-                                <option value="Playstation3">Playstation 3</option>
-                                <option value="Playstation4">Playstation 4</option>
-                                <option value="Xbox360">Xbox 360</option>
-                                <option value="Xboxone">Xbox One</option>
-                                <option value="PC">Computador</option>
+                                <option value="Playstation 3">Playstation 3</option>
+                                <option value="Playstation 4">Playstation 4</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="PC">PC</option>
 
                             </select> 
                         </div>
@@ -111,6 +103,5 @@ and open the template in the editor.
                 </div>
             </form>
         </div>
-
     </body>
 </html>
