@@ -1,19 +1,22 @@
 package com.senac.tadas.pi3.ctrl_tech;
 
 //package com.senac.tadas.pi3.ctrl_tech;
-public class Produto {
+public abstract class Produto {
 
-    public Produto(String codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
+    public Produto(String codigoBarra, String nome, String descricao, double valor, int qtdAtual, int qtdMinima, int qtdMaxima,String tipo, int status) {
         this.codigoBarra = codigoBarra;
         this.nome = nome;
         this.descricao = descricao;
-        this.valor = valor;
-        this.usuario = usuario;
+        this.valor = valor;        
         this.qtdAtual = qtdAtual;
         this.qtdMinima = qtdMinima;
-        this.qtdMaxima = qtdMaxima;
-        this.fabricante = fabricante;
-        this.garantia = garantia;
+        this.qtdMaxima = qtdMaxima;        
+        this.tipo = tipo;
+        this.status= status;
+        
+    }
+
+    public Produto() {
     }
 
     public String getCodigoBarra() {
@@ -40,20 +43,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
     public void setValor(float valor) {
         this.valor = valor;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     public int getQtdAtual() {
@@ -80,21 +75,23 @@ public class Produto {
         this.qtdMaxima = qtdMaxima;
     }
 
-    public String getFabricante() {
-        return fabricante;
+
+    public int getStatus() {
+        return status;
     }
 
-    public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getGarantia() {
-        return garantia;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setGarantia(String garantia) {
-        this.garantia = garantia;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
+
 
     private String codigoBarra;
 
@@ -102,9 +99,7 @@ public class Produto {
 
     private String descricao;
 
-    private float valor;
-
-    private String usuario;
+    private double valor;
 
     private int qtdAtual;
 
@@ -112,8 +107,11 @@ public class Produto {
 
     private int qtdMaxima;
 
-    private String fabricante;
+    
+    private int status;
+    
+    private String tipo;
 
-    private String garantia;
+    
 
 }

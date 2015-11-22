@@ -5,7 +5,10 @@
  */
 package com.senac.tadas.pi3.ctrl_tech.servlet;
 
+import com.senac.tadas.pi3.ctrl_tech.Produto;
+import com.senac.tadas.pi3.ctrl_tech.Acessorio;
 import com.senac.tadas.pi3.ctrl_tech.Usuario;
+import com.senac.tadas.pi3.ctrl_tech.dao.AcessorioDAO;
 import com.senac.tadas.pi3.ctrl_tech.dao.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,7 +51,9 @@ public class buscarUsuarioServlet extends HttpServlet {
 
         UsuarioDAO dao = new UsuarioDAO();
         Usuario user = new Usuario();
-
+ 
+        Acessorio acess =  new Acessorio();
+        
         request.getParameter("emailBusca");
         
         String emailUsuario = request.getParameter("emailBusca");
@@ -58,6 +63,18 @@ public class buscarUsuarioServlet extends HttpServlet {
         
         String email = emailUsuario;
         
+       
+        
+        AcessorioDAO das = new AcessorioDAO();
+        
+        acess = das.buscarAcessorio("1234");
+        
+        acess = new Acessorio("DSAD", "DASDAD", "DASDASDAS",  "DASDAS", email, 1.2, 1, 54, 200, "dasdas", 1);
+        
+        
+        System.out.println("Teste");
+        
+        das.incluir(acess);
         request.setAttribute("user", user);
         request.setAttribute("emailUsuario", emailUsuario);
         //request.setAttribute("email", email);

@@ -29,13 +29,13 @@ and open the template in the editor.
                 </ul>
             </nav>
             <br/>
-			<form method="get" action="buscarUsuarioServlet" class="login">
-            <fieldset>
-                <label>DIGITE O EMAIL DO USUARIO: </label>
-                <input type="text" id="busca" name="emailBusca"/>
-                <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>				
-            </fieldset>
-			</form>
+            <form method="get" action="buscarUsuarioServlet" class="login">
+                <fieldset>
+                    <label>DIGITE O EMAIL DO USUARIO: </label>
+                    <input type="text" id="busca" name="emailBusca"/>
+                    <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>				
+                </fieldset>
+            </form>
             <form method="POST" action="EditarUsuarioServlet" class="login">
                 <fieldset>
                     <legend>DADOS CADASTRAIS</legend>
@@ -56,13 +56,25 @@ and open the template in the editor.
                         <label>CARGO: </label>
                         <input type="text" class="cadastro" id="cargo" name="cargo" value="${user.cargo}" />
                     </div>
-                    
+
                     <div>
+
                         <label>PERFIL: </label>
-                        <select id="perfil"  >
-                            <option value="1" >Ativo</option>
-                            <option value="0" selected="selected">Inativo</option>
-                        </select> 
+                        <c:choose>
+                            <c:when test="${user.ativo=='1'}">
+                                <select id="perfil"  name="status">
+                                    <option value="1" selected="selected">Ativo</option>
+                                    <option value="0" >Inativo</option>
+                                </select>
+                            </c:when>                     
+                            <c:otherwise>
+                                <select id="perfil" name="status" >
+                                    <option value="1" >Ativo</option>
+                                    <option value="0" selected="selected">Inativo</option>
+                                </select>
+                            </c:otherwise>
+                        </c:choose>
+
                     </div>
                 </fieldset>
 
@@ -70,12 +82,36 @@ and open the template in the editor.
                 <fieldset>
                     <legend>TIPO DE USUÁRIO</legend>
                     <label>PERFIL: </label>
-
-                    <select id="perfil" name="tipoUsuario">
-                        <option value="COMUM">Comum</option>
-                        <option value="ADMIN">Admin</option>
-                        <option value="SUPORTE">Suporte</option>
-                    </select> 
+                    <c:choose>
+                        <c:when test="${user.tipoUsuario=='COMUM'}">
+                            <select id="perfil" name="tipoUsuario">
+                                <option value="COMUM" selected="selected">Comum</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="SUPORTE">Suporte</option>
+                            </select> 
+                        </c:when>
+                        <c:when test="${user.tipoUsuario=='ADMIN'}">
+                            <select id="perfil" name="tipoUsuario">
+                                <option value="COMUM" >Comum</option>
+                                <option value="ADMIN" selected="selected">Admin</option>
+                                <option value="SUPORTE">Suporte</option>
+                            </select> 
+                        </c:when>
+                        <c:when test="${user.tipoUsuario=='SUPORTE'}">
+                            <select id="perfil" name="tipoUsuario">
+                                <option value="COMUM" >Comum</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="SUPORTE" selected="selected">Suporte</option>
+                            </select> 
+                        </c:when>
+                        <c:otherwise>
+                            <select id="perfil" name="tipoUsuario">
+                                <option value="COMUM" CHECKED>Comum</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="SUPORTE" >Suporte</option>
+                            </select> 
+                        </c:otherwise>
+                    </c:choose>
                 </fieldset>
                 <!-- DADOS DE LOGIN -->
                 <fieldset>
@@ -83,23 +119,21 @@ and open the template in the editor.
 
                     <div>
                         <label>E-mail: </label>
-                        <input type="text" class="cadastro" id="email" name="email"/>
+                        <input type="text" class="cadastro" id="email" name="email" value="${user.email}"/>
                     </div>
 
                     <div>
                         <label>Senha: </label>
-                        <input type="password" class="cadastro" id="pass" name="pass"/>
+                        <input type="password" class="cadastro" id="pass" name="senha" value="${user.senha}"/>
                     </div>
 
                 </fieldset>
-                
                 <div class="botoes">
-                    <button class="botoesazul" type="button">Salvar</button>
+                    <button class="botoesazul"  type="Submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
                     <button class="botoeslaranja" type="button">Voltar</button>
                 </div>
-			</form>
+            </form>
         </div>
-
     </body>
 </html>

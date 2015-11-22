@@ -1,39 +1,44 @@
 package com.senac.tadas.pi3.ctrl_tech;
 
-//package com.senac.tadas.pi3.ctrl_tech.java;
+public class Console extends Produto {
 
+    private String fabricante;
+    private String armazenamento;
+    private String garantia;
 
-//import com.senac.tadas.pi3.ctrl_tech.java.Produto;
+    public Console() {
+    }
 
-public class Console extends Produto{
+    public Console(String fabricante, String armazenamento, String garantia, String codigoBarra, String nome, String descricao, double valor, int qtdAtual, int qtdMinima, int qtdMaxima, String tipo, int status) {
+        super(codigoBarra, nome, descricao, valor, qtdAtual, qtdMinima, qtdMaxima, tipo, status);
+        this.fabricante = fabricante;
+        this.armazenamento = armazenamento;
+        this.garantia = garantia;
+    }
+    
+    public String getFabricanteString() {
+        return fabricante;
+    }
 
-    public float getArmazenamento() {
+    public void setFabricanteString(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public String getArmazenamento() {
         return armazenamento;
     }
 
-    public void setArmazenamento(float armazenamento) {
+    public void setArmazenamento(String armazenamento) {
         this.armazenamento = armazenamento;
     }
 
-    public Jogo getJogo() {
-        return jogo;
+    public String getGarantia() {
+        return garantia;
     }
 
-    public void setJogo(Jogo jogo) {
-        this.jogo = jogo;
+    public void setGarantia(String garantia) {
+        this.garantia = garantia;
     }
 
-	private float armazenamento;	
-
-	private Jogo jogo;
-
-    public Console(float armazenamento, Jogo jogo, String codigoBarra, String nome, String descricao, float valor, String usuario, int qtdAtual, int qtdMinima, int qtdMaxima, String fabricante, String garantia) {
-        super(codigoBarra, nome, descricao, valor, usuario, qtdAtual, qtdMinima, qtdMaxima, fabricante, garantia);
-        this.armazenamento = armazenamento;
-        this.jogo = jogo;
-    }
-        
-        
-	
-
+    
 }
