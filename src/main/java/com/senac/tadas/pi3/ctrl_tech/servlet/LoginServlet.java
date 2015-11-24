@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
             }
             sessao = request.getSession(true);
             sessao.setAttribute("usuario", usuario);
-            response.sendRedirect("telaPrincipal.html");
+            response.sendRedirect("telaprincipal.jsp");
             return;
             // FIM CASO SUCESSO
         }

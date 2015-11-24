@@ -25,7 +25,7 @@ and open the template in the editor.
             <nav id="menu">
                 <ul>
                     <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                    <li><a href="editarAtivarDesativarusuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
+                    <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
                     <li><a href="cadastrarproduto.jsp">CADASTRAR PRODUTO</a></li>
                     <li><a href="listarprodutos.jsp">LISTAR PRODUTOS</a></li>
                     <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
