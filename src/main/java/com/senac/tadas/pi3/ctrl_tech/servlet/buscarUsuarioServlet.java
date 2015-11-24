@@ -65,16 +65,10 @@ public class buscarUsuarioServlet extends HttpServlet {
         
        
         
-        AcessorioDAO das = new AcessorioDAO();
         
-        acess = das.buscarAcessorio("1234");
-        
-        acess = new Acessorio("DSAD", "DASDAD", "DASDASDAS",  "DASDAS", email, 1.2, 1, 54, 200, "dasdas", 1);
+      
         
         
-        System.out.println("Teste");
-        
-        das.incluir(acess);
         request.setAttribute("user", user);
         request.setAttribute("emailUsuario", emailUsuario);
         //request.setAttribute("email", email);
