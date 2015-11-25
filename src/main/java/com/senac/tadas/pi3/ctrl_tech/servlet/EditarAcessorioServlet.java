@@ -61,7 +61,7 @@ public class EditarAcessorioServlet extends HttpServlet {
         double valor = Double.parseDouble(val);
         int qtdAtual = Integer.parseInt(qtd);
         int stat = Integer.parseInt(status);        
-        Acessorio access = new Acessorio(marca, plataforma, codBarra, nome, descricao, valor, qtdAtual, qtdAtual, qtdAtual, "ACESSORIO", stat);
+        Acessorio access = new Acessorio(marca, plataforma, codBarra, nome, descricao, valor, qtdAtual, qtdAtual, qtdAtual, "Acessorio", stat);
 
         try {
             AcessorioDAO dao = new AcessorioDAO();

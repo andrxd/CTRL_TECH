@@ -1,7 +1,7 @@
 package com.senac.tadas.pi3.ctrl_tech;
 
 //package com.senac.tadas.pi3.ctrl_tech;
-public abstract class Produto {
+public  class Produto {
 
     public Produto(String codigoBarra, String nome, String descricao, double valor, int qtdAtual, int qtdMinima, int qtdMaxima,String tipo, int status) {
         this.codigoBarra = codigoBarra;

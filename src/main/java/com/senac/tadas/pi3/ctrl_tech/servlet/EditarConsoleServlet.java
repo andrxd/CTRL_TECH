@@ -63,7 +63,7 @@ public class EditarConsoleServlet extends HttpServlet {
         int qtdAtual = Integer.parseInt(qtd);
         int stat = Integer.parseInt(status);    
         
-        Console console = new Console(fabricante, armazenamento, garantia, codBarra, nome, descricao, valor, qtdAtual, qtdAtual, qtdAtual, "CONSOLE", stat);
+        Console console = new Console(fabricante, armazenamento, garantia, codBarra, nome, descricao, valor, qtdAtual, qtdAtual, qtdAtual, "Console", stat);
 
         try {
             ConsoleDAO dao = new ConsoleDAO();

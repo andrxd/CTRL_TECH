@@ -63,7 +63,7 @@ public class EditarJogoServlet extends HttpServlet {
         int qtdAtual = Integer.parseInt(qtd);
         int stat = Integer.parseInt(status);    
         
-        Jogo jogo = new Jogo(genero, faixaetaria, plataforma, codBarra, nome, descricao, valor, qtdAtual, qtdAtual, qtdAtual, "JOGO", stat);
+        Jogo jogo = new Jogo(genero, faixaetaria, plataforma, codBarra, nome, descricao, valor, qtdAtual, qtdAtual, qtdAtual, "Jogo", stat);
 
         try {
             JogoDAO dao = new JogoDAO();
