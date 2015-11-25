@@ -16,7 +16,9 @@ and open the template in the editor.
         <link href="css/menu.css"  rel="stylesheet" type="text/css" />
         <script src="menu.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
+
     <body>
         <h1>Lista de Usuarios</h1>
         <table>
@@ -31,11 +33,11 @@ and open the template in the editor.
             <c:forEach items="${lista}" var="prod">
                 <tr>
                     <td><c:out value="${prod.codigoBarra}" /></td>
-                <td><c:out value="${prod.nome}" /></td>
-                <td><c:out value="${prod.descricao}" /></td>
-                <td><c:out value="${prod.qtdAtual}" /></td>
-                <td><c:out value="${prod.tipo}" /></td>
-                <td><c:out value="${prod.valor}" /></td>
+                    <td><c:out value="${prod.nome}" /></td>
+                    <td><c:out value="${prod.descricao}" /></td>
+                    <td><c:out value="${prod.qtdAtual}" /></td>
+                    <td><c:out value="${prod.tipo}" /></td>
+                    <td><c:out value="${prod.valor}" /></td>
                 </tr>
             </c:forEach>
         </table>

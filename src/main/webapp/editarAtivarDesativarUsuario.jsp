@@ -8,7 +8,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Tela de Controle de Usuário</title>
+        <title>Controle de Usuário</title>
         <meta charset="UTF-8">
         <link href="css/menu.css"  rel="stylesheet" type="text/css" />
         <script src="javascript/menu.js" type="text/javascript"></script>

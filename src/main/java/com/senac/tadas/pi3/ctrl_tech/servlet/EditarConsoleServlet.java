@@ -6,11 +6,8 @@
 package com.senac.tadas.pi3.ctrl_tech.servlet;
 
 import com.senac.tadas.pi3.ctrl_tech.Console;
-import com.senac.tadas.pi3.ctrl_tech.Usuario;
 import com.senac.tadas.pi3.ctrl_tech.dao.ConsoleDAO;
-import com.senac.tadas.pi3.ctrl_tech.dao.UsuarioDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

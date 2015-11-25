@@ -31,7 +31,7 @@ and open the template in the editor.
                         <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
                         <li><a href="cadastrarproduto.jsp">CADASTRAR PRODUTO</a></li>
                         <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>
-                        <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
+                        <li><a href="retirarReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
                         <li><a href="editarProduto.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
                         <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
                         <li><a href="Logout">LOGOUT</a></li>
