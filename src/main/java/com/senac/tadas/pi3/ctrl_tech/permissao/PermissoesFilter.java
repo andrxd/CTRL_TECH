@@ -75,7 +75,7 @@ public class PermissoesFilter implements Filter {
      */
     private static boolean verificarAcesso(Usuario usuario, HttpServletRequest req, HttpServletResponse resp) {
         String pagina = req.getRequestURI();
-        if (pagina.endsWith("cadastrarUsuario.jsp") && usuario.autorizar("COMUM")) {
+        if (pagina.endsWith("/ADMIN/cadastrarUsuario.jsp") && usuario.autorizar("COMUM")) {
             return true;
         } else if (pagina.endsWith("cadastrarUsuario.jsp") && usuario.autorizar("ADMIN")) {
             return true;

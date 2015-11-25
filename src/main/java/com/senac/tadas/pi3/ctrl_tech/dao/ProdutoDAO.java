@@ -6,6 +6,7 @@
 package com.senac.tadas.pi3.ctrl_tech.dao;
 
 import com.senac.tadas.pi3.ctrl_tech.Produto;
+import com.senac.tadas.pi3.ctrl_tech.Relatorio;
 import com.senac.tadas.pi3.ctrl_tech.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -119,12 +120,11 @@ public class ProdutoDAO extends CommonDAO {
 
         try {
             //constroi o PreparedStatement com o SQL
-            PreparedStatement stmt = con.prepareStatement(sql);          
-           
-            stmt.setInt(1, quantidade);          
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, quantidade);
             stmt.setString(2, codBarra);
-            
-            
+
             stmt.execute();
             stmt.close();
 
@@ -133,12 +133,12 @@ public class ProdutoDAO extends CommonDAO {
             ex.printStackTrace();
         }
     }
-    public void registrar(Usuario u, Produto p,int quantidade, String acao) {
+
+    public void registrar(Usuario u, Produto p, int quantidade, String acao) {
         PreparedStatement stmt = null;
         Connection conn = null;
 
         String sql = "INSERT INTO RELATORIO (DATA,NOMEDOUSUARIO,EMAILDOUSUARIO,FILIAL,CODIGOPRODUTO,NOMEDOPRODUTO,QUANTIDADE,ACAO) VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?,?)\n";
-
 
         try {
             conn = obterConexao();
@@ -151,7 +151,6 @@ public class ProdutoDAO extends CommonDAO {
             stmt.setInt(6, quantidade);
             stmt.setString(7, acao);
             stmt.execute();
-           
 
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -171,6 +170,53 @@ public class ProdutoDAO extends CommonDAO {
                 }
             }
         }
+    }
+
+    public List<Relatorio> gerarRelatorio() {
+        // monta SQL 
+        String sql = "SELECT * FROM RELATORIO";
+        Connection conn = null;
+        // cria lista
+        List<Relatorio> lista = new ArrayList<>();
+        try {
+            conn = obterConexao();
+            //constroi o PreparedStatement com o SQL
+            PreparedStatement sqlcommandos = conn.prepareStatement(sql);
+
+            ResultSet resultadoSelect = sqlcommandos.executeQuery();
+
+            while (resultadoSelect.next()) {
+                Relatorio prod = new Relatorio();
+                prod.setData(resultadoSelect.getString("data"));
+                prod.setNomeUsuario(resultadoSelect.getString("NomedoUsuario"));
+                prod.setEmailUsuario(resultadoSelect.getString("EmaildoUsuario"));
+                prod.setFilial(resultadoSelect.getString("Filial"));
+                prod.setCodigoProduto(resultadoSelect.getString("CodigoProduto"));
+                prod.setNomeProduto(resultadoSelect.getString("NomedoProduto"));
+                prod.setQuantidade(Integer.parseInt(resultadoSelect.getString("Quantidade")));
+                prod.setAcao((resultadoSelect.getString("acao")));
+
+                //adciona o objeto usuario que foi criado com os dados do banco pra vetor de obetos
+                lista.add(prod);
+            }
+            return lista;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return lista;
+
     }
 
     public ProdutoDAO() {
