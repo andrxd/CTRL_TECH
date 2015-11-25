@@ -27,16 +27,16 @@ and open the template in the editor.
             <form id="telaAdministrador">
                 <nav id="menu">
                     <ul>
-                        <li><a href="cadastrarAcessorio.jsp">CADASTRAR USUARIO</a></li>
+                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
                         <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
                         <li><a href="cadastrarproduto.jsp">CADASTRAR PRODUTO</a></li>
-                        <li><a href="listarprodutos.jsp">LISTAR PRODUTOS</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>
                         <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                        <li><a href="editarProduto.jsp">EDITAR / ATIVAR / DESATIVAR</a></li>
+                        <li><a href="editarProduto.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
                         <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                        <li><a href="Logout">LOGOUT</a></li>
                     </ul>
                 </nav>
-
             </form><center>
             <img src = "imagem/logo.png" width="450" >
             </center>
