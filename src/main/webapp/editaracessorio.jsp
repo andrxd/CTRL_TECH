@@ -36,7 +36,7 @@ and open the template in the editor.
                     <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>	
                 </form>
             </fieldset>
-            <form method="POST" action="editarAcessorioServlet" class="login">
+            <form method="POST" action="EditarAcessorioServlet" class="login">
                 <div id="acessorio">
                     <fieldset>
                         <legend><b>DADOS DO ACESSORIO</b></legend>
@@ -51,11 +51,7 @@ and open the template in the editor.
                         <div>
                             <label >MARCA: </label>
                             <input type="text"  class="acessorio" id="nome" value="${prod.marca}" name="marca" maxlength="25"/> 
-                        </div>
-                        <div>
-                            <label >PLATAFORMA: </label>
-                            <input type="text"  class="acessorio" id="nome"  value="${prod.plataforma}" name="plataforma" maxlength="25"/> 
-                        </div>
+                        </div>                 
                         <div>
                             <label>VALOR: </label>
                             <input type="text" class="acessorio" id="valor" value="${prod.valor}" name="valor"/>
@@ -99,10 +95,10 @@ and open the template in the editor.
                         </div>
 
                         <div>
-                            <label>DESCRIÃÃO: </label>
+                            <label>DESCRIÇÃO: </label>
                         </div>
                         <div >
-                            <textarea name="descricao"  value="${prod.descricao}" class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40" ></textarea>
+                            <textarea name="descricao" class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40" >${prod.descricao}</textarea>
                         </div>
 
                     </fieldset>

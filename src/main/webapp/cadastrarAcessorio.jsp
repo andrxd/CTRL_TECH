@@ -50,10 +50,7 @@ and open the template in the editor.
                             <label >MARCA: </label>
                             <input type="text"  class="acessorio" id="nome" name="marca" maxlength="25"/> 
                         </div>
-                        <div>
-                            <label >PLATAFORMA: </label>
-                            <input type="text"  class="acessorio" id="nome" name="plataforma" maxlength="25"/> 
-                        </div>
+                       
                         <div>
                             <label>VALOR: </label>
                             <input type="text" class="acessorio" id="valor" name="valor"/>
@@ -65,7 +62,7 @@ and open the template in the editor.
                         <div>
                             <label>PLATAFORMA: </label>
 
-                            <select id="consolebox" name="console" >
+                            <select id="consolebox" name="plataforma" >
                                 <option value="Playstation 3">Playstation 3</option>
                                 <option value="Playstation 4">Playstation 4</option>
                                 <option value="Xbox 360">Xbox 360</option>

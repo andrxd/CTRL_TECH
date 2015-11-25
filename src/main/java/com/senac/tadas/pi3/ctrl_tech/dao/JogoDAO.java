@@ -116,7 +116,7 @@ public class JogoDAO extends CommonDAO {
 
     public void alterar(Jogo jogo) throws SQLException, ClassNotFoundException {
 
-        String sql = "UPDATE PRODUTO SET genero=?, faixaetaria=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,STATUS=? WHERE CodBarra = ? ";
+        String sql = "UPDATE PRODUTO SET genero=?, faixaetaria=?, plataforma=? , nome=?, descricao=?, valor=?, QUANTIDADEAtual=?, QUANTIDADEMinima=?,QUANTIDADEMaxima=?,TIPO=?,STATUS=? WHERE CodBarra = ? ";
 
         Connection con = obterConexao();
 

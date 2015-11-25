@@ -36,13 +36,13 @@ and open the template in the editor.
                     <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>	
                 </form>
             </fieldset>
-            <form method="POST" action="cadastrarJogoServlet" >
+            <form method="POST" action="EditarJogoServlet" >
                 <div id="jogo">
                     <fieldset>
                         <legend><b>DADOS DO JOGO</b></legend>
                         <div>
-                            <label >CÃD DE BARRA: </label>
-                            <input type="text" class="jogo" value="${prod.codigoBarra}" id="codbarra" name="codbarra"/>
+                            <label >COD DE BARRA:        <c:out value="${prod.codigoBarra}"/>. </label>                            
+                            <input type="hidden"  value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
                         </div>
                         <div>
                             <label >NOME: </label>
@@ -54,11 +54,11 @@ and open the template in the editor.
                         </div>                      
                         <div>
                             <label>QUANTIDADE: </label>
-                            <input type="text" class="jogo" id="armazenamento" value="${prod.qtdAtual}" name="quantidade"/>
+                            <input type="text" class="jogo" id="armazenamento" value="${prod.qtdAtual}" name="qtdAtual"/>
 
                         </div>
                         <div>
-                            <label>GÃNERO: </label>
+                            <label>GENERO: </label>
                             <input type="text" class="jogo" id="genero" value="${prod.genero}" name="genero"/>
 
                         </div>
@@ -104,7 +104,7 @@ and open the template in the editor.
                             <label>DESCRIÃÃO: </label>
                         </div>
                         <div>
-                            <textarea name="descricao" value="${prod.descricao}"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40"></textarea>
+                            <textarea name="descricao" value="${prod.descricao}"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40">${prod.descricao}</textarea>
                         </div>
                     </fieldset>
                 </div>
