@@ -29,11 +29,12 @@ and open the template in the editor.
                     <ul>
                         <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
                         <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                        <li><a href="cadastrarproduto.jsp">CADASTRAR PRODUTO</a></li>
-                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>
-                        <li><a href="retirarReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                        <li><a href="editarProduto.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
-                        <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTA DE PRODUTOS</a></li>
+                        <li><a href="ListarUsuariosServlet">LISTA DE USUARIOS</a></li>
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
+                        <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
                         <li><a href="Logout">LOGOUT</a></li>
                     </ul>
                 </nav>

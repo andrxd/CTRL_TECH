@@ -29,7 +29,15 @@ and open the template in the editor.
                     <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
                 </ul>
             </nav><br/>
-
+            <div id="navbar" name="navbar" >
+                <div id="abas">
+                    <ul>
+                        <li><a href="#" id="onlink">Console</a></li>
+                        <li><a href="editarjogo.jsp" >Jogo</a></li>
+                        <li><a href="editarconsole.jsp" >Acessório</a></li>
+                    </ul>
+                </div>
+            </div>
             <fieldset>
                 <form method="get" action="buscarConsoleServlet" >
                     <label for="nome">DIGITE O COD. DE BARRA DO PRODUTO: </label>
@@ -41,7 +49,7 @@ and open the template in the editor.
                 <div id="console">
                     <fieldset>
                         <legend><b>DADOS DO CONSOLE</b></legend>
-                       <div>
+                        <div>
                             <label >COD DE BARRA:        <c:out value="${prod.codigoBarra}"/>. </label>                            
                             <input type="hidden"  value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
                         </div>

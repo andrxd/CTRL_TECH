@@ -29,6 +29,15 @@ and open the template in the editor.
                     <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
                 </ul>
             </nav><br/>
+            <div id="navbar" name="navbar" >
+                <div id="abas">
+                    <ul>
+                        <li><a href="editarconsole.jsp">Console</a></li>
+                        <li><a href="#" id="onlink">Jogo</a></li>
+                        <li><a href="editarjogo.jsp" >Acessório</a></li>
+                    </ul>
+                </div>
+            </div>
             <fieldset>
                 <form method="get" action="buscarJogoServlet" >
                     <label for="nome">DIGITE O COD. DE BARRA DO PRODUTO: </label>

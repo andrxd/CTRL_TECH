@@ -15,33 +15,39 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class="central">
+         <div class="central">
             <!-- BANNER CENTRALIZADO -->
             <div id="banner">
                 <img src = "imagem/max banner.jpg" >
             </div>
-            <!--            MENU DO COMUM-->
-            <nav id="menu">
-                <ul>
-                    <li><a href="#">CADASTRAR PRODUTO</a></li>
-                    <li><a href="#">CONSULTAR ESTOQUE</a></li>
-                    <li><a href="#">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
-                </ul>
-            </nav><br/>
-
-            <!--<fieldset>
-                <label for="nome">DIGITE O NOME OU CÃD. DE BARRA DO PRODUTO: </label>
-                <input type="text" id="nome" name="busca"/>
-                <img src = "imagem/lupa.png" width="25" height="23">
-            </fieldset>-->
-
+            <!--  MENU -->
+              <form id="telaAdministrador">
+                <nav id="menu">
+                    <ul>
+                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                        <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
+                        <li><a href="listarproduto.jsp">LISTAR PRODUTOS</a></li>
+                        <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
+                        <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                    </ul>
+                </nav>
+            </form>
+             <div id="navbar" name="navbar" >
+                
+                <div id="abas">
+                    <ul>
+                        <li><a href="#" id="onlink">Console</a></li>
+                        <li><a href="cadastrarJogo.jsp" >Jogo</a></li>
+                        <li><a href="cadastrarAcessorio.jsp" >Acessório</a></li>
+                    </ul>
+                </div>
             <form method="POST" action="cadastrarConsoleServlet" class="login">
                 <div id="console">
                     <fieldset>
                         <legend><b>DADOS DO CONSOLE</b></legend>
                         <div>
-                            <label >CÃD DE BARRA: </label>
+                            <label >CÓD DE BARRA: </label>
                             <input type="text" class="console" id="codbarra" name="codbarra"/>
                         </div>
                         <div>
@@ -101,7 +107,7 @@ and open the template in the editor.
                 <div class="botoes">
                     <button class="botoesazul" type="submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
-                    <button class="botoeslaranja" type="button">Voltar</button>
+                   <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
             </form>
         </div>

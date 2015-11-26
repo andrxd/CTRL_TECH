@@ -20,21 +20,34 @@ and open the template in the editor.
             <div id="banner">
                 <img src = "imagem/max banner.jpg" >
             </div>
-            <!--            MENU DO COMUM-->
-            <nav id="menu">
-                <ul>
-                    <li><a href="#">CADASTRAR PRODUTO</a></li>
-                    <li><a href="#">CONSULTAR ESTOQUE</a></li>
-                    <li><a href="#">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
-                </ul>
-            </nav><br/>
+            <!--   MENU  -->
+            <form id="telaAdministrador">
+                <nav id="menu">
+                    <ul>
+                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                        <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
+                        <li><a href="listarproduto.jsp">LISTAR PRODUTOS</a></li>
+                        <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
+                       <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
+                        <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                    </ul>
+                </nav>
+            </form>
+             <div id="navbar" name="navbar" >
+                
+                <div id="abas">
+                    <ul>
+                        <li><a href="cadastrarConsole.jsp">Console</a></li>
+                        <li><a href="#"  id="onlink" >Jogo</a></li>
+                        <li><a href="cadastrarAcessorio.jsp" >Acessório</a></li>
+                    </ul>
+                </div>
             <form method="POST" action="cadastrarJogoServlet" >
                 <div id="jogo">
                     <fieldset>
                         <legend><b>DADOS DO JOGO</b></legend>
                         <div>
-                            <label >CÃD DE BARRA: </label>
+                            <label >CÓD DE BARRA: </label>
                             <input type="text" class="jogo" id="codbarra" name="codbarra"/>
                         </div>
                         <div>
@@ -88,7 +101,7 @@ and open the template in the editor.
                         </div>
 
                         <div>
-                            <label>DESCRIÃÃO: </label>
+                            <label>DESCRIÇÃO: </label>
                         </div>
                         <div >
                             <textarea name="descricao"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40"></textarea>
@@ -99,7 +112,7 @@ and open the template in the editor.
                 <div class="botoes">
                     <button class="botoesazul" type="Submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
-                    <button class="botoeslaranja" type="button">Voltar</button>
+                    <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
             </form>
         </div>
