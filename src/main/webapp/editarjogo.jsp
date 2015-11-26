@@ -100,7 +100,6 @@ and open the template in the editor.
                             </select> 
                         </div>
                         <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
-
                         <div>
                             <label>STATUS DO PRODUTO: </label>
                             <c:choose>

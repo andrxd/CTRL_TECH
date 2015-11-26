@@ -34,15 +34,12 @@ td:last-child {
 }
 
 /* PERSONALIZAÇÃO DAS ABAS*/
-#navbar{
-    width: 660px;
-    left: 300px;
-}
+
 #navbar #abas{
     height: 64px;
     border-bottom: 1px #000;
     width: 630px;
-    padding-left: 25px;
+    padding-left: 170px;
 }
 #navbar #abas ul{
     list-style: none;
@@ -177,7 +174,7 @@ div.botoes{
     margin-left: 50px
 }
 
-#cadastroUsuario input.cadastro,#acessorio input.acessorio,#console input.console,#jogo input.jogo{
+#cadastro input.cadastro,#acessorio input.acessorio,#console input.console,#jogo input.jogo{
     position:absolute;
     left: 150px;
     width:220px;

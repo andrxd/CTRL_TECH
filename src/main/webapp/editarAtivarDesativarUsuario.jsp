@@ -23,32 +23,34 @@ and open the template in the editor.
             <!--MENU -->
 
             <nav id="menu">
-                    <ul>
-                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
-                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
-                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
-                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+                <ul>
+                    <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                    <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                    <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                    <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
 
-                        <c:choose>
-                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
-                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR USUARIO</a></li>
-                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
-                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
-                                </c:when>  
-                            </c:choose>
-                        <li><a href="Logout">LOGOUT</a></li>
-                    </ul>
-                </nav>
+                    <c:choose>
+                        <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                            <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                            <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR USUARIO</a></li>
+                            <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                            <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                            </c:when>  
+                        </c:choose>
+                    <li><a href="Logout">LOGOUT</a></li>
+                </ul>
+            </nav>
             <br/>
             <form method="get" action="buscarUsuarioServlet" class="login">
-                <fieldset>
-                    <label>DIGITE O EMAIL DO USUARIO: </label>
-                    <input type="text" id="busca" name="emailBusca"/>
-                    <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>				
-                </fieldset>
+              
+                    <fieldset>
+                        <label>DIGITE O EMAIL DO USUARIO: </label>
+                        <input type="text" id="busca" name="emailBusca"/>
+                        <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>				
+                    </fieldset>
             </form>
             <form method="POST" action="EditarUsuarioServlet" class="login">
+                 <div id="cadastro">
                 <fieldset>
                     <legend>DADOS CADASTRAIS</legend>
                     <div>
@@ -137,13 +139,14 @@ and open the template in the editor.
                         <label>Senha: </label>
                         <input type="password" class="cadastro" id="pass" name="senha" value="${user.senha}"/>
                     </div>
-
+                  
                 </fieldset>
                 <div class="botoes">
                     <button class="botoesazul"  type="Submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
                     <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
+            </div>
             </form>
         </div>
     </body>

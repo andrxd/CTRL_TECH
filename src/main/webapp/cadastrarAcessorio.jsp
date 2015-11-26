@@ -55,11 +55,11 @@ and open the template in the editor.
                             <legend><b>DADOS DO ACESSORIO</b></legend>
                          	<div>
                                 <label >COD DE BARRA: </label>
-                                <input type="text"  class="acessorio" id="codbarra" name="codbarra"/>
+                                <input type="text" pattern="[0-9,]{1,50}" class="acessorio" id="codbarra" name="codbarra"/>
                             </div>
                             <div>
                                 <label >NOME: </label>
-                                <input type="text"  class="acessorio" id="nome" name="nome" maxlength="25"/> 
+                                <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="acessorio" id="nome" name="nome" maxlength="25"/> 
                             </div>
                             <div>
                                 <label >MARCA: </label>
@@ -115,7 +115,8 @@ and open the template in the editor.
                             </div>
 
                         </fieldset>
-
+                        
+                      
                     </div>
 
                     <div class="botoes">

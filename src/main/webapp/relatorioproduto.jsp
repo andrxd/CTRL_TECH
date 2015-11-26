@@ -20,6 +20,29 @@ and open the template in the editor.
     </head>
 
     <body>
+           <div class="central">
+            <!-- BANNER CENTRALIZADO -->
+            <div id="banner">
+                <img src = "imagem/max banner.jpg" >
+            </div><nav id="menu">
+                <ul>
+                    <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                    <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                    <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                    <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                    <c:choose>
+                        <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                            <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                            <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR USUARIO</a></li>
+                            <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                            <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                            </c:when>  
+                        </c:choose>
+                    <li><a href="Logout">LOGOUT</a></li>
+                </ul>
+            </nav>
+            <br/>
         <h1>Relatorio</h1>
         <table>
             <tr>

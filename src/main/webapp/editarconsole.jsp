@@ -61,7 +61,7 @@ and open the template in the editor.
                         <legend><b>DADOS DO CONSOLE</b></legend>
                         <div>
                             <label >COD DE BARRA:        <c:out value="${prod.codigoBarra}"/>. </label>                            
-                            <input type="hidden"  value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
+                            <input type="hidden" value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
                         </div>
                         <div>
                             <label >NOME: </label>

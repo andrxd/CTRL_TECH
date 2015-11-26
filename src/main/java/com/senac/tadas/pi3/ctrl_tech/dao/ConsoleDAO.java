@@ -23,7 +23,7 @@ public class ConsoleDAO extends CommonDAO {
         Connection conn = null;
 
         String sql = "select * from Produto\n"
-                + "WHERE codBarra = '" + codBarra + "'";
+                + "WHERE codBarra = '" + codBarra + "' AND tipo='Console'";
 
         try {
             conn = obterConexao();

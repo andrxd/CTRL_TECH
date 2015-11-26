@@ -22,8 +22,6 @@ and open the template in the editor.
                 <img src = "imagem/max banner.jpg" >
             </div>
             <!--            MENU DO SUPORTE-->
-            <br/>
-
             <form id="telaAdministrador">
                 <nav id="menu">
                     <ul>
@@ -45,7 +43,7 @@ and open the template in the editor.
                 </nav>
             </form><center>
                 <img src = "imagem/logo.png" width="450" >
-            </center>
+                </center>
         </div>
     </body>
 </html>

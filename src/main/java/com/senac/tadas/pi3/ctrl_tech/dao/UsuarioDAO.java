@@ -24,8 +24,8 @@ public class UsuarioDAO extends CommonDAO {
         Connection conn = null;
 
         String sql = "select EMAIL,SENHA from USUARIO\n"
-                + "WHERE EMAIL = '" + email
-                + "' AND  SENHA = '" + senha + "' AND ATIVO = 1 ";
+                + "WHERE UPPER(EMAIL) = UPPER('" + email
+                + "') AND  SENHA = '" + senha + "' AND ATIVO = 1 ";
 
         try {
             conn = obterConexao();
@@ -68,8 +68,8 @@ public class UsuarioDAO extends CommonDAO {
         Connection conn = null;
 
         String sql = "select * from USUARIO\n"
-                + "WHERE EMAIL = '" + email
-                + "' AND  SENHA = '" + senha + "' AND ATIVO = 1";
+                + "WHERE UPPER(EMAIL) = UPPER('" + email
+                + "') AND  SENHA = '" + senha + "' AND ATIVO = 1";
 
         try {
             conn = obterConexao();
@@ -118,7 +118,7 @@ public class UsuarioDAO extends CommonDAO {
         Connection conn = null;
 
         String sql = "select * from USUARIO\n"
-                + "WHERE EMAIL = '" + email + "'";
+                + "WHERE UPPER(EMAIL) = UPPER('" + email + "')";
 
         try {
             conn = obterConexao();
@@ -134,7 +134,7 @@ public class UsuarioDAO extends CommonDAO {
                 String cargoBanco = resultados.getString("cargo");
                 String tipoUsuarioBanco = resultados.getString("TipoUsuario");
                 int ativo = resultados.getInt("Ativo");
-                if (emailBanco.equals(email)) {
+                if (emailBanco!=null) {
                     Usuario User = new Usuario(emailBanco, senhaBanco, nomeCompleto, tipoUsuarioBanco, filialBanco, cargoBanco, rgBanco, ativo);
                     return User;
                 }

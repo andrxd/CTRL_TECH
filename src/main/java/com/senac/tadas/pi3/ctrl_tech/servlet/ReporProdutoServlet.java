@@ -56,19 +56,21 @@ public class ReporProdutoServlet extends HttpServlet {
         int qtdRepor = Integer.parseInt(request.getParameter("qtdRepor"));
         String nome = request.getParameter("nome");
 
+        qtdAtual += qtdRepor;
+        
         prod.setNome(nome);
         prod.setQtdAtual(qtdAtual);
         prod.setCodigoBarra(codBarra);
         
         
-         HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         
         HttpSession sessao = httpRequest.getSession();
         
         Usuario usuario = (Usuario) sessao.getAttribute("usuario");
         
-        qtdAtual += qtdRepor;
+        
         try {
             dao.alterarQuantidade(qtdAtual, codBarra);
             dao.registrar(usuario, prod, qtdRepor, "REPOSICAO");

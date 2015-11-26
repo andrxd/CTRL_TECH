@@ -22,35 +22,37 @@ and open the template in the editor.
             </div>
             <!--            MENU DO SUPORTE-->
 
-           <nav id="menu">
-                    <ul>
-                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
-                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
-                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
-                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+            <nav id="menu">
+                <ul>
+                    <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                    <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                    <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                    <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
 
-                        <c:choose>
-                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
-                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR USUARIO</a></li>
-                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
-                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
-                                </c:when>  
-                            </c:choose>
-                        <li><a href="Logout">LOGOUT</a></li>
-                    </ul>
-                </nav>
+                    <c:choose>
+                        <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                            <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                            <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR USUARIO</a></li>
+                            <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                            <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                            </c:when>  
+                        </c:choose>
+                    <li><a href="Logout">LOGOUT</a></li>
+                </ul>
+            </nav>
             <br/>
             <form action="cadastrarUsuarioServlet" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded">                
-                 <fieldset>
+               <div id="cadastro">
+                <fieldset>
+                   
                         <legend>DADOS CADASTRAIS</legend>
                         <div>
                             <label>NOME COMPLETO: </label>
-                            <input type="text"  pattern="[a-zA-Z, ,]{1,50}" class="cadastro" id="nome" name="nome"/>
+                            <input type="text"  pattern="[a-zA-Z, ,]{1,60}" class="cadastro" id="nome" name="nome"/>
                         </div>
                         <div>
                             <label>RG: </label>
-                            <input type="text" pattern="[0-9]{1,11}" class="cadastro" id="rg" name="rg" maxlength="13"/> 
+                            <input type="text" pattern="[0-9]{1,12}" class="cadastro" id="rg" name="rg" maxlength="13"/> 
                         </div>
                         <div>
                             <label>FILIAL:</label>
@@ -60,8 +62,8 @@ and open the template in the editor.
                             <label>CARGO: </label>
                             <input type="text" pattern="[a-zA-Z, ,]{1,50}" class="cadastro" id="cargo" name="cargo"/>
                         </div>
-                    </fieldset><br/>
-
+                </fieldset><br/>
+                <br>
                 <!-- PERFIL USUARIO -->
                 <fieldset>
                     <legend>TIPO DE USUÁRIO</legend>
@@ -73,7 +75,7 @@ and open the template in the editor.
                         <option value="SUPORTE">Suporte</option>
                     </select> 
                 </fieldset>
-
+                <br>
                 <!-- DADOS DE LOGIN -->
                 <fieldset>
                     <legend>DADOS DE ACESSO</legend>
@@ -89,14 +91,14 @@ and open the template in the editor.
                     </div>
 
                 </fieldset>
-
-                <div class="botoes">
-                    <input class="botoesazul" type="submit" value="Cadastrar"/>                    
-                    <button class="botoesvermelho" type="button">Limpar</button>
-                    <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
-                </div>
-            </form>
-
+               </div>
+        <div class="botoes">
+            <input class="botoesazul" type="submit" value="Cadastrar"/>                    
+            <button class="botoesvermelho" type="button">Limpar</button>
+            <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
         </div>
-    </body>
+    </form>
+
+</div>
+</body>
 </html>

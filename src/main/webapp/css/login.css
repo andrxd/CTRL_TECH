@@ -98,13 +98,7 @@ table {
     margin: 0 -1px;
 }
 
-/*
- * Copyright (c) 2012-2013 Thibaut Courouble
- * http://www.cssflow.com
- *
- * Licensed under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
- */
+
 body, .login-submit, .login-submit:before, .login-submit:after {
     background: #373737 url("../img/bg.png") 0 0 repeat;
 }
@@ -290,13 +284,10 @@ body {
     font-size: 12px;
     line-height: 24px;
     background-image:url(".../imagem/max.png");
-    background-attachment: fixed;
-    background-size: 1600px;
-    background-position-x: 0px;
-    background-repeat: no-repeat;
-    font: 12px 'Lucida Grande', Arial, sans-serif;
-    border-radius: 10px;
-    margin-top: 15px;
+   -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 nav {

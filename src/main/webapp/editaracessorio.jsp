@@ -51,7 +51,7 @@ and open the template in the editor.
             <fieldset>
                 <form method="get" action="buscarAcessorioServlet" >
                     <label for="nome">DIGITE O COD. DE BARRA DO PRODUTO: </label>
-                    <input type="text" id="nome" pattern="[0-9]{12}" name="busca"/>
+                    <input type="text" id="nome" name="busca"/>
                     <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>	
                 </form>
             </fieldset>
@@ -61,7 +61,7 @@ and open the template in the editor.
                         <legend><b>DADOS DO ACESSORIO</b></legend>
                         <div>
                             <label >COD DE BARRA:        <c:out value="${prod.codigoBarra}"/>. </label>                            
-                            <input type="hidden"  value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
+                            <input type="hidden" value="${prod.codigoBarra}" name="codigoBarra" maxlength="25"/> 
                         </div>
                         <div>
                             <label >NOME: </label>
@@ -69,7 +69,7 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label >MARCA: </label>
-                            <input type="text"  class="acessorio" id="nome" value="${prod.marca}" name="marca" maxlength="25"/> 
+                            <input type="text"  pattern="[a-zA-Z,0-9, ,]{1,50}" class="acessorio" id="nome" value="${prod.marca}" name="marca" maxlength="25"/> 
                         </div>                 
                         <div>
                             <label>VALOR: </label>

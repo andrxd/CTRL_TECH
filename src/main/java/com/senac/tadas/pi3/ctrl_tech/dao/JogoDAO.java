@@ -22,7 +22,7 @@ public class JogoDAO extends CommonDAO {
         Connection conn = null;
 
         String sql = "select * from Produto\n"
-                + "WHERE codBarra = '" + codBarra + "'";
+                + "WHERE codBarra = '" + codBarra + "' AND tipo='Jogo'";
 
         try {
             conn = obterConexao();

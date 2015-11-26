@@ -84,6 +84,8 @@ public class PermissoesFilter implements Filter {
             return true;
         } else if (pagina.endsWith("ListarUsuariosServlet") &&  usuario.autorizar("ADMIN")) {
             return true;
+        }else if (pagina.endsWith("buscarUsuarioServlet") &&  usuario.autorizar("ADMIN")) {
+            return true;
         } else if (pagina.endsWith("ReporProdutoServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
             return true;
         }else if (pagina.endsWith("RetirarProdutoServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {

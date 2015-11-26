@@ -56,11 +56,11 @@ and open the template in the editor.
                         <legend><b>DADOS DO CONSOLE</b></legend>
                         <div>
                             <label >CÓD DE BARRA: </label>
-                            <input type="text"  class="console" id="codbarra" name="codbarra"/>
+                            <input type="text" pattern="[0-9,]{1,50}" class="console" id="codbarra" name="codbarra"/>
                         </div>
                         <div>
                             <label >NOME: </label>
-                            <input type="text"  class="console" id="nome" name="nome"/> 
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="console" id="nome" name="nome"/> 
                         </div>
                         <div>
                             <label>VALOR: </label>
