@@ -25,7 +25,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andre
  */
-@WebFilter(filterName = "PermissoesFilter", servletNames = {"cadastrarUsuario"}, urlPatterns = {"/cadastrarUsuario.jsp"})
+@WebFilter(filterName = "PermissoesFilter",urlPatterns = {"/cadastrarAcessorio.jsp", "/cadastrarConsole.jsp", "/cadastrarJogo.jsp", "/cadastrarUsuario.jsp", "/cadastrarproduto.jsp",
+    "/editarAtivarDesativarUsuario.jsp", "/editarProduto.jsp","/listarproduto.jsp", "/editaracessorio.jsp", "/editarconsole.jsp", "/editarjogo.jsp", "/relatorioproduto.jsp"}, servletNames = {"EditarAcessorioServlet", "EditarConsoleServlet", "EditarJogoServlet",
+    "EditarUsuarioServlet", "ListarProdutosServlet", "ListarUsuariosServlet", "ReporProdutoServlet", "RetirarProdutoServlet", "buscarAcessorioServlet",
+    "buscarConsoleServlet", "buscarJogoServlet", "buscarProdutoServlet", "buscarUsuarioServlet", "cadastrarAcessorioServlet", "cadastrarConsoleServlet",
+    "cadastrarJogoServlet", "cadastrarUsuarioServlet", "gerarRelatorioServlet",})
 public class PermissoesFilter implements Filter {
 
     @Override
@@ -33,7 +37,7 @@ public class PermissoesFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
 
-    // 1) OBTEM AS INFORMACOES DO USUARIO DA SESSAO
+        // 1) OBTEM AS INFORMACOES DO USUARIO DA SESSAO
         // A) CAST DOS PARÂMETROS RECEBIDOS
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -75,11 +79,70 @@ public class PermissoesFilter implements Filter {
      */
     private static boolean verificarAcesso(Usuario usuario, HttpServletRequest req, HttpServletResponse resp) {
         String pagina = req.getRequestURI();
-        if (pagina.endsWith("/ADMIN/cadastrarUsuario.jsp") && usuario.autorizar("COMUM")) {
+        //Paginas de acesso ADMIN e COMUM
+        if (pagina.endsWith("ListarProdutosServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
             return true;
-        } else if (pagina.endsWith("cadastrarUsuario.jsp") && usuario.autorizar("ADMIN")) {
+        } else if (pagina.endsWith("ListarUsuariosServlet") &&  usuario.autorizar("ADMIN")) {
+            return true;
+        } else if (pagina.endsWith("ReporProdutoServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        }else if (pagina.endsWith("RetirarProdutoServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        }  else if (pagina.endsWith("buscarAcessorioServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("buscarConsoleServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("buscarJogoServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("buscarProdutoServlet") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } //url jsp
+        else if (pagina.endsWith("cadastrarAcessorio.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("cadastrarConsole.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("cadastrarJogo.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("cadastrarproduto.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("editarProduto.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("editaracessorio.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("editarconsole.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        } else if (pagina.endsWith("editarjogo.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
+            return true;
+        }else if (pagina.endsWith("listarproduto.jsp") && (usuario.autorizar("COMUM") || usuario.autorizar("ADMIN"))) {
             return true;
         }
+        //Paginas de acesso exclusivo ADMIN
+        else if (pagina.endsWith("cadastrarUsuario.jsp") && usuario.autorizar("ADMIN")) {
+            return true;
+        } else if (pagina.endsWith("relatorioproduto.jsp") && usuario.autorizar("ADMIN")) {
+            return true;
+        } else if (pagina.endsWith("editarAtivarDesativarUsuario.jsp") && usuario.autorizar("ADMIN")) {
+            return true;
+        } else if (pagina.endsWith("EditarAcessorioServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("EditarConsoleServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("EditarJogoServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("EditarUsuarioServlet") && usuario.autorizar("ADMIN")) {
+            return true;
+        } else if (pagina.endsWith("cadastrarAcessorioServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("cadastrarConsoleServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("cadastrarJogoServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("cadastrarUsuarioServlet") && (usuario.autorizar("ADMIN") || usuario.autorizar("COMUM"))) {
+            return true;
+        } else if (pagina.endsWith("gerarRelatorioServlet") && usuario.autorizar("ADMIN")) {
+            return true;
+        }
+
         return false;
     }
 

@@ -12,6 +12,6 @@
   <body>
     <h1>CTRL TECH</h1>
     <h2>Usuário não autorizado a acessar esta funcionalidade</h2>
-    <a href="Login">Voltar</a>
+    <a href="telaprincipal.jsp">Voltar</a>
   </body>
 </html>
