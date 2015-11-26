@@ -31,7 +31,7 @@ and open the template in the editor.
                     <c:choose>
                         <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
                             <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                            <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                            <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR USUARIO</a></li>
                             <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
                             <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
                             </c:when>  
