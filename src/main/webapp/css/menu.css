@@ -33,33 +33,82 @@ td:last-child {
   border-right: 0px;
 }
 
-#banner img{
-    left:50%;
-    margin-left:-361px; /* metade da largura fictícia */
-    position:relative;
-    width: 724px;
-    top: -15px;
-    bottom: 0px;
-    border: 0px;
+/* PERSONALIZAÇÃO DAS ABAS*/
+#navbar{
+    width: 660px;
+    left: 300px;
+}
+#navbar #abas{
+    height: 64px;
+    border-bottom: 1px #000;
+    width: 630px;
+    padding-left: 25px;
+}
+#navbar #abas ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#navbar #abas ul li a {
+    text-decoration: none;
+    float:left;
+    margin-right: 5px;
+    font-family: "Arial ", Gadget, sans-serif;
+    color: #fff;
+    border: 1px solid gray;
+    border-bottom: none;
+    padding:20px;
+    width: 75px;
+    text-align: center;
+    display: block;
+    background: #404040;
+    border-radius: 15px;
+}
 
+#navbar #abas ul li a:hover {
+    background-color: #D6D6D6;
+    color: #000;
+   }
+#abas ul li a#onlink{
+    background-color: #FFF;
+    color: #000;
+    border-bottom: 1px solid #FFF;
+}
+#abas ul li a#onlink:hover{
+    background: #FFF;
+    color: #69F;
+    text-shadow: 1px 1px 1px #000
+}
+
+
+#banner img{
+    margin-left:-9px; /* alinha banner na div central */
+    position:relative;
+    width: 714px;
+    top: -15px;
+    margin-bottom:-25px;
 }
 
 div.central{
-    /*margin: 0px;*/
     font-size: 12px ;
     font: 12px 'Lucida Grande', Arial, sans-serif;
     position:relative;
     top: 0px;
     bottom: 0px;
-    left: 360px;
-    width: 705px;
+    left: 347px;
+    margin-left: 0px;
+    width: 714px;
+/* background-color: blue;*/
 }
+
 body {
     margin:0px;
-    /*    position: static;*/
-    background: url("../imagem/max.png") no-repeat fixed;
-     background-size: 1440px;   
-     background-color: #D6D6D6;
+    background: url("../imagem/max.png") no-repeat center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #D6D6D6;
 }
 fieldset{
     position: relative;
@@ -68,7 +117,7 @@ fieldset{
     padding: 10px;
     border-radius: 10px;
     width: 500px;
-    left: 13%; 
+    left: 10%; 
     margin-bottom: 10px;
 
 }
@@ -127,7 +176,6 @@ div.botoes{
     margin-left: 50px
 }
 
-
 #cadastroUsuario input.cadastro,#acessorio input.acessorio,#console input.console,#jogo input.jogo{
     position:absolute;
     left: 150px;
@@ -149,31 +197,31 @@ div.botoes{
     left: 132px;
 }
 
+/* MENU PRINCIPAL*/
+
 #menu ul {
     padding:0px;
-    border-radius: 5px;
     margin:0px;
     background-color:#404040;
     list-style:none;
 }
-
 #menu ul li { display: inline; }
 
 #menu ul li a {
-
     border-radius: 5px;
-    padding:12px 10px;
+    padding:12px 6px;
     display: inline-block;
 
     /* visual do link */
     background-color:#404040;
     color: white;
     text-decoration: none;
-    /*    border-bottom:4px solid black;*/
 }
 
 #menu ul li a:hover {
     background-color:#D6D6D6;
-    color: #6D6D6D;
-    /*    border-bottom:3px solid ;*/
+    color: #000;
+    text-align: center;
+
 }
+
