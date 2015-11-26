@@ -23,10 +23,20 @@ and open the template in the editor.
             <!--            MENU DO COMUM-->
             <nav id="menu">
                 <ul>
-                    <li><a href="#">CADASTRAR PRODUTO</a></li>
-                    <li><a href="#">CONSULTAR ESTOQUE</a></li>
-                    <li><a href="#">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
+                    <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                    <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                    <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                    <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                    <c:choose>
+                        <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                            <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                            <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                            <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                            <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                            </c:when>  
+                        </c:choose>
+                    <li><a href="Logout">LOGOUT</a></li>
                 </ul>
             </nav><br/>
             <fieldset>
@@ -42,7 +52,7 @@ and open the template in the editor.
                     <legend><b>DADOS DO JOGO</b></legend>
                     <div>
                         <label >COD DE BARRA: ${prod.codigoBarra} </label>                           
-                         
+
                     </div>
                     <div>
                         <label >NOME: ${prod.nome}</label>   
@@ -52,7 +62,7 @@ and open the template in the editor.
                     </div> 
                 </fieldset>
             </div>          
-                    
+
             <form method="POST" action="RetirarProdutoServlet">
                 <fieldset>
                     <legend>RETIRAR PRODUTO</legend>

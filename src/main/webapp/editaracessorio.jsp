@@ -22,13 +22,23 @@ and open the template in the editor.
             </div>
             <!--            MENU DO COMUM-->
             <nav id="menu">
-                <ul>
-                    <li><a href="#">CADASTRAR PRODUTO</a></li>
-                    <li><a href="#">CONSULTAR ESTOQUE</a></li>
-                    <li><a href="#">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
-                </ul>
-            </nav><br/>
+                    <ul>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
+                    </ul>
+                </nav><br/>
             <div id="navbar" name="navbar" >
                 <div id="abas">
                     <ul>
@@ -41,7 +51,7 @@ and open the template in the editor.
             <fieldset>
                 <form method="get" action="buscarAcessorioServlet" >
                     <label for="nome">DIGITE O COD. DE BARRA DO PRODUTO: </label>
-                    <input type="text" id="nome" name="busca"/>
+                    <input type="text" id="nome" pattern="[0-9]{12}" name="busca"/>
                     <button type="submit" value=""><img id="lupa" src = "imagem/lupa.png" width="25" height="23"></button>	
                 </form>
             </fieldset>
@@ -55,7 +65,7 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label >NOME: </label>
-                            <input type="text"  class="acessorio" id="nome" value="${prod.nome}" name="nome" maxlength="25"/> 
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="acessorio" id="nome" value="${prod.nome}" name="nome" maxlength="25"/> 
                         </div>
                         <div>
                             <label >MARCA: </label>
@@ -67,7 +77,7 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label>QUANTIDADE: </label>
-                            <input type="text" class="acessorio" id="valor" value="${prod.qtdAtual}" name="qtdAtual"/>
+                            <input type="text"type="text" pattern="[0-9]{1,4}"  class="acessorio" id="valor" value="${prod.qtdAtual}" name="qtdAtual"/>
                         </div>
                         <div>
                             <label>PLATAFORMA: </label>
@@ -116,7 +126,7 @@ and open the template in the editor.
                 <div class="botoes">
                     <button  class="botoesazul" type="submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
-                    <button class="botoeslaranja" type="button">Voltar</button>
+                    <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
             </form>
 

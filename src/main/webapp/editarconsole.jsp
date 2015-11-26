@@ -22,19 +22,29 @@ and open the template in the editor.
             </div>
             <!--            MENU DO COMUM-->
             <nav id="menu">
-                <ul>
-                    <li><a href="#">CADASTRAR PRODUTO</a></li>
-                    <li><a href="#">CONSULTAR ESTOQUE</a></li>
-                    <li><a href="#">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
-                </ul>
-            </nav><br/>
+                    <ul>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
+                    </ul>
+                </nav><br/>
             <div id="navbar" name="navbar" >
                 <div id="abas">
                     <ul>
                         <li><a href="#" id="onlink">Console</a></li>
                         <li><a href="editarjogo.jsp" >Jogo</a></li>
-                        <li><a href="editarconsole.jsp" >Acessório</a></li>
+                        <li><a href="editaracessorio.jsp" >Acessório</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,7 +65,7 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label >NOME: </label>
-                            <input type="text"  class="console" value="${prod.nome}" id="nome" name="nome"/> 
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="console" value="${prod.nome}" id="nome" name="nome"/> 
                         </div>
                         <div>
                             <label>VALOR: </label>
@@ -63,19 +73,19 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label>FABRICANTE: </label>
-                            <input type="text" class="console" id="desenvolvedora" value="${prod.fabricanteString}" name="fabricante"/>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="console" id="desenvolvedora" value="${prod.fabricanteString}" name="fabricante"/>
                         </div>
                         <div>
                             <label>GARANTIA: </label>
-                            <input type="text" class="console" id="garantia" value="${prod.garantia}" name="garantia"/>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,8}" class="console" id="garantia" value="${prod.garantia}" name="garantia"/>
                         </div>
                         <div>
                             <label>ARMAZENAMENTO: </label>
-                            <input type="text" class="console" id="armazenamento" value="${prod.armazenamento}" name="armazenamento"/>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,12}" class="console" id="armazenamento" value="${prod.armazenamento}" name="armazenamento"/>
                         </div>
                         <div>
                             <label>QUANTIDADE </label>
-                            <input type="text" class="console" id="quantidade" name="qtdAtual" value="${prod.qtdAtual}"/>
+                            <input type="text" pattern="[0-9]{1,4}" class="console" id="quantidade" name="qtdAtual" value="${prod.qtdAtual}"/>
                         </div>                    
                         <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
 

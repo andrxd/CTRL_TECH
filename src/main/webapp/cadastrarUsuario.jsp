@@ -22,39 +22,45 @@ and open the template in the editor.
             </div>
             <!--            MENU DO SUPORTE-->
 
-            <nav id="menu">
-                <ul>                    
-                    <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                    <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                    <li><a href="cadastrarproduto.jsp">CADASTRAR PRODUTO</a></li>
-                    <li><a href="listarprodutos.jsp">LISTAR PRODUTOS</a></li>
-                    <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="editarProduto.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
-                    <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>                
-                </ul>
-            </nav>
-            <br/>
-            <form action="cadastrarUsuarioServlet" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded">
-                <fieldset>
-                    <legend>DADOS CADASTRAIS</legend>
-                    <div>
-                        <label>NOME COMPLETO: </label>
-                        <input type="text" class="cadastro" id="nome" name="nome"/>
-                    </div>
-                    <div>
-                        <label>RG: </label>
-                        <input type="text" class="cadastro" id="rg" name="rg" maxlength="13"/> 
-                    </div>
+           <nav id="menu">
+                    <ul>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
 
-                    <div>
-                        <label>FILIAL:</label>
-                        <input type="text" class="cadastro" id="filial" name="filial"/>
-                    </div>
-                    <div>
-                        <label>CARGO: </label>
-                        <input type="text" class="cadastro" id="cargo" name="cargo"/>
-                    </div>
-                </fieldset>
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
+                    </ul>
+                </nav>
+            <br/>
+            <form action="cadastrarUsuarioServlet" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded">                
+                 <fieldset>
+                        <legend>DADOS CADASTRAIS</legend>
+                        <div>
+                            <label>NOME COMPLETO: </label>
+                            <input type="text"  pattern="[a-zA-Z, ,]{1,50}" class="cadastro" id="nome" name="nome"/>
+                        </div>
+                        <div>
+                            <label>RG: </label>
+                            <input type="text" pattern="[0-9]{1,11}" class="cadastro" id="rg" name="rg" maxlength="13"/> 
+                        </div>
+                        <div>
+                            <label>FILIAL:</label>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="cadastro" id="filial" name="filial"/>
+                        </div>
+                        <div>
+                            <label>CARGO: </label>
+                            <input type="text" pattern="[a-zA-Z, ,]{1,50}" class="cadastro" id="cargo" name="cargo"/>
+                        </div>
+                    </fieldset><br/>
 
                 <!-- PERFIL USUARIO -->
                 <fieldset>
@@ -74,7 +80,7 @@ and open the template in the editor.
 
                     <div>
                         <label>E-mail: </label>
-                        <input type="text" class="cadastro" id="email" name="email"/>
+                        <input type="email" class="cadastro" id="email" name="email"/>
                     </div>
 
                     <div>
@@ -87,7 +93,7 @@ and open the template in the editor.
                 <div class="botoes">
                     <input class="botoesazul" type="submit" value="Cadastrar"/>                    
                     <button class="botoesvermelho" type="button">Limpar</button>
-                    <button class="botoeslaranja" type="button">Voltar</button>
+                    <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
             </form>
 

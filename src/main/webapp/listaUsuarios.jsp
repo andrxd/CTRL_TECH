@@ -44,6 +44,6 @@ and open the template in the editor.
         <hr/>
         <%-- VERIFICA SE USUÁRIO TEM O PAPEL DE ADMIN --%>
       
-        <p><a href="Logout">Sair</a> (Logado como ${sessionScope.usuario.nomeCompleto})</p>
+        
     </body>
 </html>

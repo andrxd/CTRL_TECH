@@ -22,14 +22,22 @@ and open the template in the editor.
             </div>
             <!--   MENU  -->
             <form id="telaAdministrador">
-                <nav id="menu">
+               <nav id="menu">
                     <ul>
-                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                        <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                        <li><a href="listarproduto.jsp">LISTAR PRODUTOS</a></li>
-                        <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                       <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
-                        <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
                     </ul>
                 </nav>
             </form>
@@ -46,39 +54,35 @@ and open the template in the editor.
                 <div id="jogo">
                     <fieldset>
                         <legend><b>DADOS DO JOGO</b></legend>
-                        <div>
-                            <label >CÓD DE BARRA: </label>
-                            <input type="text" class="jogo" id="codbarra" name="codbarra"/>
-                        </div>
-                        <div>
-                            <label >NOME: </label>
-                            <input type="text"  class="jogo" id="nome" name="nome"/> 
-                        </div>
-                        <div>
-                            <label>VALOR: </label>
-                            <input type="text" class="jogo" id="valor" name="valor"/>
-                        </div>                                           
-                        <div>
-                            <label>ARMAZENAMENTO: </label>
-                            <input type="text" class="jogo" id="armazenamento" name="armazenamento"/>
+                       <div>
+                                <label >CÓD DE BARRA: </label>
+                                <input type="text"   class="jogo" id="codbarra" name="codbarra"/>
+                            </div>
+                            <div>
+                                <label >NOME: </label>
+                                <input type="text"  class="jogo" id="nome" name="nome"/> 
+                            </div>
+                            <div>
+                                <label>VALOR: </label>
+                                <input type="text" class="jogo" id="valor" name="valor"/>
+                            </div>                                          
+                            
+                            <div>
+                                <label>QUANTIDADE: </label>
+                                <input type="text" pattern="[0-9]{1,3}" class="jogo" id="armazenamento" name="quantidade"/>
 
-                        </div>
-                        <div>
-                            <label>QUANTIDADE: </label>
-                            <input type="text" class="jogo" id="armazenamento" name="quantidade"/>
+                            </div>
+                            <div>
+                                <label>GÊNERO: </label>
+                                <input type="text" pattern="[a-zA-Z, ,]{1,30}"class="jogo" id="genero" name="genero"/>
 
-                        </div>
-                        <div>
-                            <label>GÃNERO: </label>
-                            <input type="text" class="jogo" id="genero" name="genero"/>
+                            </div>
+                            <div>
+                                <label>FAIXA ETARIA: </label>
+                                <input type="text" pattern="[a-zA-Z,0-9,' ',]{1,6}" class="jogo" id="faixaetaria" name="faixaetaria"/>
 
-                        </div>
-                        <div>
-                            <label>FAIXAETARIA: </label>
-                            <input type="text" class="jogo" id="faixaetaria" name="faixaetaria"/>
-
-                        </div>
-                        <div>
+                            </div>
+                            <div>
                             <label>PLATAFORMA: </label>
 
                             <select id="consolebox" name="plataforma" >

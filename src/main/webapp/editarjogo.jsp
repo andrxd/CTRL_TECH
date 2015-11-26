@@ -22,19 +22,29 @@ and open the template in the editor.
             </div>
             <!--            MENU DO COMUM-->
             <nav id="menu">
-                <ul>
-                    <li><a href="#">CADASTRAR PRODUTO</a></li>
-                    <li><a href="#">CONSULTAR ESTOQUE</a></li>
-                    <li><a href="#">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="#">EDITAR / ATIVAR / DESATIVAR</a></li>
-                </ul>
-            </nav><br/>
+                    <ul>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
+                    </ul>
+                </nav><br/>
             <div id="navbar" name="navbar" >
                 <div id="abas">
                     <ul>
                         <li><a href="editarconsole.jsp">Console</a></li>
                         <li><a href="#" id="onlink">Jogo</a></li>
-                        <li><a href="editarjogo.jsp" >Acessório</a></li>
+                        <li><a href="editaracessorio.jsp" >Acessório</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,7 +65,7 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label >NOME: </label>
-                            <input type="text"  value="${prod.nome}" class="jogo" id="nome" name="nome"/> 
+                            <input type="text"  value="${prod.nome}" pattern="[a-zA-Z,0-9, ,]{1,50}" class="jogo" id="nome" name="nome"/> 
                         </div>
                         <div>
                             <label>VALOR: </label>
@@ -63,17 +73,17 @@ and open the template in the editor.
                         </div>                      
                         <div>
                             <label>QUANTIDADE: </label>
-                            <input type="text" class="jogo" id="armazenamento" value="${prod.qtdAtual}" name="qtdAtual"/>
+                            <input type="text" class="jogo" pattern="[0-9]{1,4}" id="armazenamento" value="${prod.qtdAtual}" name="qtdAtual"/>
 
                         </div>
                         <div>
                             <label>GENERO: </label>
-                            <input type="text" class="jogo" id="genero" value="${prod.genero}" name="genero"/>
+                            <input type="text" class="jogo" pattern="[a-zA-Z, ,]{1,30}" id="genero" value="${prod.genero}" name="genero"/>
 
                         </div>
                         <div>
                             <label>FAIXA ETARIA: </label>
-                            <input type="text" class="jogo" id="faixaetaria" value="${prod.faixaEtaria}" name="faixaetaria"/>
+                            <input type="text" class="jogo" id="faixaetaria" pattern="[a-zA-Z,0-9,' ',]{1,6}" value="${prod.faixaEtaria}" name="faixaetaria"/>
 
                         </div>
                         <div>

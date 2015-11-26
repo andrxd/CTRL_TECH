@@ -24,12 +24,20 @@ and open the template in the editor.
               <form id="telaAdministrador">
                 <nav id="menu">
                     <ul>
-                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                        <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                        <li><a href="listarproduto.jsp">LISTAR PRODUTOS</a></li>
-                        <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                        <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
-                        <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
                     </ul>
                 </nav>
             </form>
@@ -48,7 +56,7 @@ and open the template in the editor.
                         <legend><b>DADOS DO CONSOLE</b></legend>
                         <div>
                             <label >CÓD DE BARRA: </label>
-                            <input type="text" class="console" id="codbarra" name="codbarra"/>
+                            <input type="text"  class="console" id="codbarra" name="codbarra"/>
                         </div>
                         <div>
                             <label >NOME: </label>
@@ -60,19 +68,19 @@ and open the template in the editor.
                         </div>
                         <div>
                             <label>FABRICANTE: </label>
-                            <input type="text" class="console" id="desenvolvedora" name="fabricante"/>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,50}" class="console" id="desenvolvedora" name="fabricante"/>
                         </div>
                         <div>
                             <label>GARANTIA: </label>
-                            <input type="text" class="console" id="garantia" name="garantia"/>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,8}" class="console" id="garantia" name="garantia"/>
                         </div>
                         <div>
                             <label>ARMAZENAMENTO: </label>
-                            <input type="text" class="console" id="armazenamento" name="armazenamento"/>
+                            <input type="text" pattern="[a-zA-Z,0-9, ,]{1,12}" class="console" id="armazenamento" name="armazenamento"/>
                         </div>
                         <div>
                             <label>QUANTIDADE </label>
-                            <input type="text" class="console" id="quantidade" name="quantidade"/>
+                            <input type="text" pattern="[0-9]{1,4}" class="console" id="quantidade" name="quantidade"/>
                         </div>
 
                         <!--  ATIVANDO OU DESATIVANDO PRODUTO-->
@@ -97,7 +105,7 @@ and open the template in the editor.
                         </div>
 
                         <div>
-                            <label>DESCRIÃÃO: </label>
+                            <label>DESCRIÇÃO: </label>
                         </div>
                         <div >
                             <textarea name="descricao"  class="acessorio" id="descricao" style="resize:none;" rows=10 cols="40"></textarea>
@@ -107,7 +115,7 @@ and open the template in the editor.
                 <div class="botoes">
                     <button class="botoesazul" type="submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
-                   <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
+                   	<a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
             </form>
         </div>

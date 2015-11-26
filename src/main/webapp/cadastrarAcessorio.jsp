@@ -24,12 +24,20 @@ and open the template in the editor.
             <form id="telaAdministrador">
                 <nav id="menu">
                     <ul>
-                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                        <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                        <li><a href="listarproduto.jsp">LISTAR PRODUTOS</a></li>
-                        <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                        <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
-                        <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
                     </ul>
                 </nav>
             </form>
@@ -45,9 +53,9 @@ and open the template in the editor.
                     <div id="acessorio">
                         <fieldset>
                             <legend><b>DADOS DO ACESSORIO</b></legend>
-                            <div>
+                         	<div>
                                 <label >COD DE BARRA: </label>
-                                <input type="text" class="acessorio" id="codbarra" name="codbarra"/>
+                                <input type="text"  class="acessorio" id="codbarra" name="codbarra"/>
                             </div>
                             <div>
                                 <label >NOME: </label>
@@ -55,16 +63,16 @@ and open the template in the editor.
                             </div>
                             <div>
                                 <label >MARCA: </label>
-                                <input type="text"  class="acessorio" id="nome" name="marca" maxlength="25"/> 
+                                <input type="text"  pattern="[a-zA-Z,0-9, ,]{1,50}" class="acessorio" id="nome" name="marca" maxlength="25"/> 
                             </div>
 
                             <div>
                                 <label>VALOR: </label>
-                                <input type="text" class="acessorio" id="valor" name="valor"/>
+                                <input type="text"  class="acessorio" id="valor" name="valor"/>
                             </div>
                             <div>
                                 <label>QUANTIDADE: </label>
-                                <input type="text" class="acessorio" id="valor" name="quantidade"/>
+                                <input type="text" pattern="[0-9]{1,4}" class="acessorio" id="valor" name="quantidade"/>
                             </div> 
                             <div>
                                 <label>PLATAFORMA: </label>

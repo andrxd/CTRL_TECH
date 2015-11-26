@@ -8,7 +8,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Painel de Controle Administrador</title>
+        <title>Inicio</title>
         <meta charset="UTF-8">
         <link href="css/menu.css"  rel="stylesheet" type="text/css" />
         <script src="javascript/menu.js" type="text/javascript"></script>
@@ -27,14 +27,19 @@ and open the template in the editor.
             <form id="telaAdministrador">
                 <nav id="menu">
                     <ul>
-                        <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                        <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                        <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
                         <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
-                        <li><a href="editarconsole.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>                                               
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
                         <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
-                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>
-                        <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
                         <li><a href="Logout">LOGOUT</a></li>
                     </ul>
                 </nav>

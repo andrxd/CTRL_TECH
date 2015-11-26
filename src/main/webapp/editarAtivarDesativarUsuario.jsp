@@ -20,19 +20,26 @@ and open the template in the editor.
             <div id="banner">
                 <img src = "imagem/max banner.jpg" >
             </div>
-            <!--            MENU DO SUPORTE-->
+            <!--MENU -->
 
             <nav id="menu">
-                <ul>
-                    <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
-                    <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / ATIVAR / DESATIVAR USUARIO</a></li>
-                    <li><a href="cadastrarproduto.jsp">CADASTRAR PRODUTO</a></li>
-                    <li><a href="listarprodutos.jsp">LISTAR PRODUTOS</a></li>
-                    <li><a href="venderReporProduto.jsp">VENDER / REPOR PRODUTO</a></li>
-                    <li><a href="editarProduto.jsp">EDITAR / ATIVAR / DESATIVAR PRODUTO</a></li>
-                    <li><a href="relatorioproduto.jsp">RELATÓRIO</a></li>
-                </ul>
-            </nav>
+                    <ul>
+                        <li><a href="cadastrarConsole.jsp">CADASTRAR PRODUTO</a></li>
+                        <li><a href="editarconsole.jsp">EDITAR PRODUTO</a></li>                                               
+                        <li><a href="retirarReporProduto.jsp">RETIRAR / REPOR PRODUTO</a></li>
+                        <li><a href="ListarProdutosServlet">LISTAR PRODUTOS</a></li>                        
+
+                        <c:choose>
+                            <c:when test="${sessionScope.usuario.tipoUsuario=='ADMIN'}">
+                                <li><a href="cadastrarUsuario.jsp">CADASTRAR USUARIO</a></li>
+                                <li><a href="editarAtivarDesativarUsuario.jsp">EDITAR / USUARIO</a></li>
+                                <li><a href="ListarUsuariosServlet">LISTAR USUARIOS</a></li>
+                                <li><a href="gerarRelatorioServlet">RELATÓRIO</a></li>
+                                </c:when>  
+                            </c:choose>
+                        <li><a href="Logout">LOGOUT</a></li>
+                    </ul>
+                </nav>
             <br/>
             <form method="get" action="buscarUsuarioServlet" class="login">
                 <fieldset>
@@ -46,20 +53,20 @@ and open the template in the editor.
                     <legend>DADOS CADASTRAIS</legend>
                     <div>
                         <label>NOME COMPLETO: </label>
-                        <input type="text" class="cadastro" id="nome" name="nome" value="${user.nomeCompleto}"/>
+                        <input type="text" class="cadastro" pattern="[a-zA-Z, ,]{1,50}" id="nome" name="nome" value="${user.nomeCompleto}"/>
                     </div>
                     <div>
                         <label>RG: </label>
-                        <input type="text" class="cadastro" id="rg" name="rg" value="${user.rg}" maxlength="13"/> 
+                        <input type="text" class="cadastro" pattern="[0-9]{1,11}" id="rg" name="rg" value="${user.rg}" maxlength="13"/> 
                     </div>
 
                     <div>
                         <label>FILIAL:</label>
-                        <input type="text" class="cadastro" id="filial" name="filial" value="${user.filial}"/>
+                        <input type="text" class="cadastro" id="filial" pattern="[a-zA-Z,0-9, ,]{1,50}"  name="filial" value="${user.filial}"/>
                     </div>
                     <div>
                         <label>CARGO: </label>
-                        <input type="text" class="cadastro" id="cargo" name="cargo" value="${user.cargo}" />
+                        <input type="text" class="cadastro" id="cargo" pattern="[a-zA-Z, ,]{1,50}" name="cargo" value="${user.cargo}" />
                     </div>
 
                     <div>
@@ -79,7 +86,6 @@ and open the template in the editor.
                                 </select>
                             </c:otherwise>
                         </c:choose>
-
                     </div>
                 </fieldset>
 
@@ -124,7 +130,7 @@ and open the template in the editor.
 
                     <div>
                         <label>E-mail: </label>
-                        <input type="text" class="cadastro" id="email" name="email" value="${user.email}"/>
+                        <input type="email" class="cadastro" id="email" name="email" value="${user.email}"/>
                     </div>
 
                     <div>
@@ -136,7 +142,7 @@ and open the template in the editor.
                 <div class="botoes">
                     <button class="botoesazul"  type="Submit">Salvar</button>
                     <button class="botoesvermelho" type="button">Limpar</button>
-                    <button class="botoeslaranja" type="button">Voltar</button>
+                    <a href="javascript:window.history.go(-1)"><button class="botoeslaranja" type="button">Voltar</button></a>
                 </div>
             </form>
         </div>

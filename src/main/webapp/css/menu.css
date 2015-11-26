@@ -8,29 +8,29 @@ table {
   background: white;
 }
 th {
-  background: steelblue;
-  height: 54px;
-  width: 25%;
-  font-weight: lighter;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
+    background: steelblue;
+    height: 54px;
+    width: 25%;
+    font-weight: lighter;
+    text-shadow: 0 1px 0 #38678f;
+    color: white;
+    border: 1px solid #38678f;
+    box-shadow: inset 0px 1px 2px #568ebd;
+    transition: all 0.2s;
 }
 tr {
-  border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
 }
 tr:last-child {
-  border-bottom: 0px;
+    border-bottom: 0px;
 }
 td {
-  border-right: 1px solid #cccccc;
-  padding: 10px;
-  transition: all 0.2s;
+    border-right: 1px solid #cccccc;
+    padding: 10px;
+    transition: all 0.2s;
 }
 td:last-child {
-  border-right: 0px;
+    border-right: 0px;
 }
 
 /* PERSONALIZAÇÃO DAS ABAS*/
@@ -90,6 +90,7 @@ td:last-child {
 }
 
 div.central{
+    
     font-size: 12px ;
     font: 12px 'Lucida Grande', Arial, sans-serif;
     position:relative;
